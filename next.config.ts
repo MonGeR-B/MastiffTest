@@ -33,12 +33,6 @@ const nextConfig: NextConfig = {
         hostname: 'directus.whitemassif.com',
         port: '',
         pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'qkzwdwhnbzrlyijluxdg.supabase.co',
-        port: '',
-        pathname: '/**',
       }
     ]
   },

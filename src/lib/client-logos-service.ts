@@ -176,21 +176,21 @@ export class ClientLogosService {
   static getFallbackLogoUrl(clientName: string): string | null {
     // Create a mapping for known clients to their Supabase URLs
     const fallbackLogos: Record<string, string> = {
-      'Microsoft': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Microsoft.webp',
-      'Amazon Web Services': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Amazon-Web-services.webp',
-      'GSK': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/GSK-1.png',
-      'Coca-Cola': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Coca-cola-1.png',
-      'Ericsson': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Ericsson.webp',
-      'Hitachi': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Hitachi.png',
-      'TVS': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/TVS.png',
-      'The New York Times': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/The-new-york-times-1.png',
-      'KLM': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/KLM-1.png',
-      'ABB': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/ABB.png',
-      'EMC': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/EMC.webp',
-      'NetApp': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Netapp.webp',
-      'Envestnet Yodlee': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Envestnet-Yodlee.webp',
-      'Microchip': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Microchip.webp',
-      'Tekion': 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/clients/Tekion.png'
+      'Microsoft': '/assets/images/clients/Microsoft.webp',
+      'Amazon Web Services': '/assets/images/clients/Amazon-Web-services.webp',
+      'GSK': '/assets/images/clients/GSK-1.png',
+      'Coca-Cola': '/assets/images/clients/Coca-cola-1.png',
+      'Ericsson': '/assets/images/clients/Ericsson.webp',
+      'Hitachi': '/assets/images/clients/Hitachi.png',
+      'TVS': '/assets/images/clients/TVS.png',
+      'The New York Times': '/assets/images/clients/The-new-york-times-1.png',
+      'KLM': '/assets/images/clients/KLM-1.png',
+      'ABB': '/assets/images/clients/ABB.png',
+      'EMC': '/assets/images/clients/EMC.webp',
+      'NetApp': '/assets/images/clients/Netapp.webp',
+      'Envestnet Yodlee': '/assets/images/clients/Envestnet-Yodlee.webp',
+      'Microchip': '/assets/images/clients/Microchip.webp',
+      'Tekion': '/assets/images/clients/Tekion.png'
     };
 
     return fallbackLogos[clientName] || null;
@@ -204,7 +204,7 @@ export class ClientLogosService {
     if (client.client_logo) {
       return this.getClientLogoUrl(client.client_logo);
     }
-    
+
     // Fallback to Supabase URL for known clients
     return this.getFallbackLogoUrl(client.client_name);
   }

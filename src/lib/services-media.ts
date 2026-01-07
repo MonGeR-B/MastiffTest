@@ -1,48 +1,45 @@
 import mediaUrls from '@/../../media_urls.json';
 
-const SUPABASE_STORAGE_URL = process.env.NEXT_PUBLIC_SUPABASE_STORAGE_URL || 'https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public';
-
 export class ServicesMediaService {
   static getServicesImages() {
-    // Filter for services folder images
-    const servicesImages = mediaUrls.filter(item => item.path_tokens[0] === 'services');
-    
     const serviceImageMap: Record<string, string> = {
-      businessEvents: `${SUPABASE_STORAGE_URL}${servicesImages.find(img => img.file_name.includes('Business Events'))?.file_url || '/massif/ Business Events.jpg'}`,
-      celebrationGalore: `${SUPABASE_STORAGE_URL}${servicesImages.find(img => img.file_name.includes('Celebration Galore'))?.file_url || '/massif/ Celebration Galore.jpg'}`,
-      inauguration: `${SUPABASE_STORAGE_URL}${servicesImages.find(img => img.file_name.includes('Inauguration'))?.file_url || '/massif/ Inauguration_.jpg'}`,
-      hybridEvents: `${SUPABASE_STORAGE_URL}${servicesImages.find(img => img.file_name.includes('Hybrid Events'))?.file_url || '/massif/Copy of Home page 2- Hybrid Events.jpg'}`,
-      specialEvents: `${SUPABASE_STORAGE_URL}${servicesImages.find(img => img.file_name.includes('special events'))?.file_url || '/massif/special events.jpg'}`,
-      servicesLanding: `${SUPABASE_STORAGE_URL}${servicesImages.find(img => img.file_name.includes('Services- Landing page'))?.file_url || '/massif/Services- Landing page_.jpg'}`,
-      conventionMeet: `${SUPABASE_STORAGE_URL}${servicesImages.find(img => img.file_name.includes('Convention'))?.file_url || '/massif/Copy of Home page 2 -Industry Convention, Customer & Dealers Meet.jpg'}`,
-      generalServices: `${SUPABASE_STORAGE_URL}${servicesImages.find(img => img.file_name.includes('Copy of Home page 2.jpg'))?.file_url || '/massif/Copy of Home page 2.jpg'}`
+      businessEvents: '/assets/images/services/DSC01247-scaled-1.jpg',
+      celebrationGalore: '/assets/images/services/DSC01514-scaled-1.jpg',
+      inauguration: '/assets/images/services/DSC01696-scaled-1.jpg',
+      hybridEvents: '/assets/images/services/DSC01901-scaled-1.jpg',
+      specialEvents: '/assets/images/services/DSC01980-scaled-1.jpg',
+      servicesLanding: '/assets/images/services/DSC02447-scaled-1.jpg',
+      conventionMeet: '/assets/images/services/DSC01878-scaled-1.jpg',
+      generalServices: '/assets/images/services/DSC02449-scaled-1.jpg'
     };
-    
+
     return serviceImageMap;
   }
-  
+
   static getServicesHeroImages() {
-    // Get all services images for hero carousel
-    const servicesImages = mediaUrls.filter(item => item.path_tokens[0] === 'services');
-    
-    return servicesImages.map(item => ({
-      src: `${SUPABASE_STORAGE_URL}${item.file_url}`,
-      alt: item.file_name.replace(/\.(jpg|jpeg|png|webp)$/i, '').replace(/[_-]/g, ' '),
-      category: this.getCategoryFromFileName(item.file_name)
-    }));
+    // Get local services images for hero carousel
+    return [
+      { src: '/assets/images/services/DSC01247-scaled-1.jpg', alt: 'Business Events', category: 'Business Events' },
+      { src: '/assets/images/services/DSC01514-scaled-1.jpg', alt: 'Celebrations', category: 'Celebrations' },
+      { src: '/assets/images/services/DSC01696-scaled-1.jpg', alt: 'Inaugurations', category: 'Inaugurations' },
+      { src: '/assets/images/services/DSC01901-scaled-1.jpg', alt: 'Hybrid Events', category: 'Hybrid Events' },
+      { src: '/assets/images/services/DSC01980-scaled-1.jpg', alt: 'Special Events', category: 'Special Events' },
+      { src: '/assets/images/services/DSC01878-scaled-1.jpg', alt: 'Conventions', category: 'Conventions' }
+    ];
   }
-  
+
   static getServicesGallery() {
-    // Get optimized images for gallery display
-    const servicesImages = mediaUrls.filter(item => item.path_tokens[0] === 'services');
-    
-    return servicesImages.map(item => ({
-      url: `${SUPABASE_STORAGE_URL}${item.file_url}`,
-      title: item.file_name.replace(/\.(jpg|jpeg|png|webp)$/i, '').replace(/[_-]/g, ' '),
-      category: this.getCategoryFromFileName(item.file_name)
-    }));
+    // Get local images for gallery display
+    return [
+      { url: '/assets/images/services/DSC01247-scaled-1.jpg', title: 'Business Events', category: 'Business Events' },
+      { url: '/assets/images/services/DSC01514-scaled-1.jpg', title: 'Celebrations', category: 'Celebrations' },
+      { url: '/assets/images/services/DSC01696-scaled-1.jpg', title: 'Inaugurations', category: 'Inaugurations' },
+      { url: '/assets/images/services/DSC01901-scaled-1.jpg', title: 'Hybrid Events', category: 'Hybrid Events' },
+      { url: '/assets/images/services/DSC01980-scaled-1.jpg', title: 'Special Events', category: 'Special Events' },
+      { url: '/assets/images/services/DSC01878-scaled-1.jpg', title: 'Conventions', category: 'Conventions' }
+    ];
   }
-  
+
   private static getCategoryFromFileName(fileName: string): string {
     if (fileName.toLowerCase().includes('business events')) return 'Business Events';
     if (fileName.toLowerCase().includes('celebration')) return 'Celebrations';

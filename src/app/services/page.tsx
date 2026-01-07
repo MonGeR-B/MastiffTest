@@ -21,7 +21,7 @@ export const metadata: Metadata = generatePageMetadata({
   ],
   openGraph: {
     type: "website",
-    images: ["https://qkzwdwhnbzrlyijluxdg.supabase.co/storage/v1/object/public/massif/services/Services-%20Landing%20page_.jpg"]
+    images: ["/assets/images/services/DSC02447-scaled-1.jpg"]
   },
   path: "/services"
 });
