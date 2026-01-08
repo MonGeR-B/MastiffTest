@@ -84,19 +84,23 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.png?v=2" />
         <link rel="apple-touch-icon" href="/favicon.png?v=2" />
 
+        {/* Critical CSS - Inline for faster FCP */}
+        <style dangerouslySetInnerHTML={{ __html: `*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid}html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto}body{margin:0;line-height:inherit}.min-h-screen{min-height:100vh}.relative{position:relative}.absolute{position:absolute}.inset-0{inset:0}.flex{display:flex}.items-center{align-items:center}.justify-center{justify-content:center}.text-center{text-align:center}.object-cover{object-fit:cover}.overflow-hidden{overflow:hidden}.animate-spin{animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}` }} />
+
         {/* Essential SEO Schemas for Organization & Local Business */}
         <SchemaMarkup schema={[
           generateOrganizationSchema(),
           generateLocalBusinessSchema(),
           generateWebSiteSchema()
         ]} />
-        
-        {/* Google Analytics */}
+
+
+        {/* Google Analytics - Deferred for performance */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-3JZS3H8914"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -111,9 +115,9 @@ export default function RootLayout({
             });
           `}
         </Script>
-        
-        {/* Microsoft Clarity */}
-        <Script id="microsoft-clarity" strategy="afterInteractive">
+
+        {/* Microsoft Clarity - Deferred for performance */}
+        <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -122,15 +126,25 @@ export default function RootLayout({
             })(window, document, "clarity", "script", "placeholder");
           `}
         </Script>
-        
+
+
+        {/* Preload critical resources for better LCP */}
+        <link
+          rel="preload"
+          as="image"
+          href="/assets/images/services/DSC02447-scaled-1.jpg"
+          fetchPriority="high"
+        />
+
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://www.clarity.ms" />
-        
+
         {/* DNS prefetch for better performance */}
         <link rel="dns-prefetch" href="https://directus.whitemassif.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body
         className={`${sinkinSans.variable} ${raleway.variable} antialiased`}

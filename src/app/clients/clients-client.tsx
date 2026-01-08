@@ -9,10 +9,10 @@ import { DirectusService, type Testimonial } from '@/lib/directus-service';
 import { ClientLogosService, type ClientLogo } from '@/lib/client-logos-service';
 import { ViewAllClientsModal } from '@/components/ViewAllClientsModal';
 import Image from 'next/image';
-import { 
-  ArrowRight, 
+import {
+  ArrowRight,
   Sparkles,
-  Users, 
+  Users,
   Calendar,
   Trophy,
   Star,
@@ -21,6 +21,7 @@ import {
   ChevronDown,
   Target
 } from "lucide-react";
+import { logger } from '@/lib/logger';
 
 // Animation variants
 const fadeInUp = {
@@ -47,7 +48,7 @@ const stats = [
   },
   {
     number: "12+",
-    label: "Years Experience", 
+    label: "Years Experience",
     icon: Trophy,
     color: "text-blue-400"
   },
@@ -124,20 +125,20 @@ export default function ClientsClient() {
   // Filter clients by industry when selection changes
   useEffect(() => {
     const fetchFilteredClients = async () => {
-      console.log('🔍 Fetching clients for industry:', selectedIndustry);
+      logger.log('Fetching clients for industry:', selectedIndustry);
       setClientsLoading(true);
       try {
         if (selectedIndustry === 'All') {
           const allLogos = await ClientLogosService.getAllClientLogos();
-          console.log('📋 All logos fetched:', allLogos.length);
+          logger.log('All logos fetched:', allLogos.length);
           setClientLogos(allLogos);
         } else {
           const filteredLogos = await ClientLogosService.getClientLogosByIndustry(selectedIndustry);
-          console.log(`🏭 ${selectedIndustry} logos fetched:`, filteredLogos.length);
+          logger.log(`${selectedIndustry} logos fetched:`, filteredLogos.length);
           setClientLogos(filteredLogos);
         }
       } catch (error) {
-        console.error('❌ Error fetching filtered clients:', error);
+        logger.error('Error fetching filtered clients:', error);
       } finally {
         setClientsLoading(false);
       }
@@ -145,9 +146,9 @@ export default function ClientsClient() {
 
     fetchFilteredClients();
   }, [selectedIndustry]);
-  
+
   // Logo data slices for animated rows using Directus data
-  const moreClientsRow1 = clientLogos.slice(0, Math.min(20, clientLogos.length)); 
+  const moreClientsRow1 = clientLogos.slice(0, Math.min(20, clientLogos.length));
   const moreClientsRow2 = clientLogos.slice(20, Math.min(40, clientLogos.length));
 
   // Memoize testimonial data to prevent flickering
@@ -182,7 +183,7 @@ export default function ClientsClient() {
     },
     {
       number: "12+",
-      label: "Years Experience", 
+      label: "Years Experience",
       icon: Trophy,
       color: "text-blue-400"
     },
@@ -206,19 +207,19 @@ export default function ClientsClient() {
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-br from-neutral-50 via-amber-50/30 to-orange-50/30" />
-        
+
         {/* Floating Elements */}
-        <motion.div 
+        <motion.div
           className="absolute top-20 left-20 w-32 h-32 glass rounded-full"
           animate={{ y: [0, -20, 0], rotate: [0, 180, 360] }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
-        <motion.div 
+        <motion.div
           className="absolute bottom-32 right-32 w-24 h-24 glass-primary organic-blob"
           animate={{ y: [0, 20, 0], rotate: [0, -180, -360] }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
         />
-        
+
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <motion.div
@@ -227,16 +228,16 @@ export default function ClientsClient() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Premium Badge */}
-            <motion.div 
+            <motion.div
               className="inline-flex items-center space-x-2 px-6 py-3 glass rounded-full mb-8 micro-glow"
               whileHover={{ scale: 1.05 }}
             >
               <Trophy className="w-5 h-5 text-amber-500" />
               <span className="text-sm font-medium tracking-wide">Hall of Trust</span>
             </motion.div>
-            
+
             {/* Main Headline */}
-            <motion.h1 
+            <motion.h1
               className="text-6xl md:text-8xl lg:text-9xl font-display leading-[0.85] mb-8"
               initial={{ opacity: 0, y: 50 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -250,8 +251,8 @@ export default function ClientsClient() {
                 Apart
               </span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl md:text-2xl mb-12 font-body max-w-4xl mx-auto text-neutral-600 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -333,23 +334,21 @@ export default function ClientsClient() {
                 {/* All Industries Button */}
                 <motion.button
                   onClick={() => setSelectedIndustry('All')}
-                  className={`group relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    selectedIndustry === 'All'
+                  className={`group relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${selectedIndustry === 'All'
                       ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg shadow-amber-500/25 scale-105'
                       : 'bg-white text-neutral-700 border border-neutral-200 hover:border-amber-400 hover:shadow-md hover:scale-105'
-                  }`}
+                    }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <div className="flex items-center gap-2">
                     <Trophy className="w-4 h-4" />
                     <span>All Industries</span>
-                    <Badge 
-                      className={`ml-1 text-xs ${
-                        selectedIndustry === 'All'
+                    <Badge
+                      className={`ml-1 text-xs ${selectedIndustry === 'All'
                           ? 'bg-white/20 text-white border-white/30'
                           : 'bg-amber-100 text-amber-700 border-amber-200'
-                      }`}
+                        }`}
                     >
                       165
                     </Badge>
@@ -361,22 +360,20 @@ export default function ClientsClient() {
                   <motion.button
                     key={category.category}
                     onClick={() => setSelectedIndustry(category.category)}
-                    className={`group relative px-5 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                      selectedIndustry === category.category
+                    className={`group relative px-5 py-3 rounded-full text-sm font-medium transition-all duration-300 ${selectedIndustry === category.category
                         ? 'bg-gradient-to-r from-neutral-800 to-neutral-900 text-white shadow-lg shadow-neutral-800/25 scale-105'
                         : 'bg-white text-neutral-700 border border-neutral-200 hover:border-neutral-400 hover:shadow-md hover:scale-105'
-                    }`}
+                      }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <div className="flex items-center gap-2">
                       <span>{category.category}</span>
-                      <Badge 
-                        className={`ml-1 text-xs ${
-                          selectedIndustry === category.category
+                      <Badge
+                        className={`ml-1 text-xs ${selectedIndustry === category.category
                             ? 'bg-white/20 text-white border-white/30'
                             : 'bg-neutral-100 text-neutral-600 border-neutral-200'
-                        }`}
+                          }`}
                       >
                         {category.count}
                       </Badge>
@@ -395,7 +392,7 @@ export default function ClientsClient() {
 
               {/* Active Filter Info */}
               {selectedIndustry !== 'All' && !clientsLoading && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-full text-sm text-amber-700"
@@ -510,7 +507,7 @@ export default function ClientsClient() {
       </section>
 
       {/* View All Clients Modal */}
-      <ViewAllClientsModal 
+      <ViewAllClientsModal
         isOpen={showAllClientsModal}
         onClose={() => setShowAllClientsModal(false)}
       />

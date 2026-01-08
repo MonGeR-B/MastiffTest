@@ -5,7 +5,7 @@ export const companyInfo = {
   name: "White Massif Event Management",
   legalName: "White Massif Event Management Private Limited",
   url: "https://whitemassif.com",
-  logo: "https://whitemassif.com/WM%20LOGO-01.png",
+  logo: "/WM LOGO-01.png",
   description: "Premier corporate event management company in India specializing in high-impact corporate events, conferences, team building activities, and brand experiences across Bangalore, Mumbai, Delhi, Chennai, Hyderabad, and Pune.",
   foundingDate: "2015",
   founders: ["Harsha", "Team White Massif"],
@@ -135,9 +135,9 @@ export function generateLocalBusinessSchema() {
     "@id": `${companyInfo.url}/#localbusiness`,
     name: companyInfo.name,
     image: [
-      "https://whitemassif.com/assets/images/home/hero-image-1.jpg",
-      "https://whitemassif.com/assets/images/home/hero-image-2.jpg",
-      "https://whitemassif.com/assets/images/home/hero-image-3.jpg"
+      "/assets/images/services/DSC02447-scaled-1.jpg",
+      "/assets/images/services/DSC01901-scaled-1.jpg",
+      "/assets/images/services/DSC01514-scaled-1.jpg"
     ],
     url: companyInfo.url,
     telephone: companyInfo.phone,
@@ -452,7 +452,7 @@ export function generatePageMetadata({
   alternates?: any;
 }): Metadata {
   const fullUrl = `${companyInfo.url}${path}`;
-  
+
   return {
     title: `${title}`,
     description,
@@ -511,7 +511,7 @@ export function generatePageMetadata({
 // Helper to inject schema into page
 export function renderSchema(schema: any | any[]): string {
   const schemas = Array.isArray(schema) ? schema : [schema];
-  return schemas.map(s => 
+  return schemas.map(s =>
     `<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(${JSON.stringify(s)}) }} />`
   ).join('\n');
 }

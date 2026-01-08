@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { DirectusService, type Blog } from '@/lib/directus-service';
 import { getDirectusAssetUrl } from '@/lib/directus-utils';
+import { logger } from '@/lib/logger';
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<Blog[]>([]);
@@ -20,13 +21,13 @@ export default function BlogPage() {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        console.log('🔍 Fetching blog posts from Directus...');
+        logger.log('Fetching blog posts from Directus...');
         const fetchedPosts = await DirectusService.getBlogPosts();
-        console.log('📊 Fetched posts:', fetchedPosts);
-        console.log('📝 Number of posts:', fetchedPosts?.length || 0);
+        logger.log('Fetched posts:', fetchedPosts);
+        logger.log('Number of posts:', fetchedPosts?.length || 0);
         setPosts(fetchedPosts || []);
       } catch (error) {
-        console.error('❌ Error fetching blog posts:', error);
+        logger.error('Error fetching blog posts:', error);
         setPosts([]);
       }
       setLoading(false);
@@ -36,8 +37,8 @@ export default function BlogPage() {
   }, []);
 
   const categories = ['All', ...Array.from(new Set(posts.map(post => post.category).filter((cat): cat is string => Boolean(cat))))];
-  const filteredPosts = selectedCategory === 'All' 
-    ? posts 
+  const filteredPosts = selectedCategory === 'All'
+    ? posts
     : posts.filter(post => post.category === selectedCategory);
 
   if (loading) {
@@ -62,15 +63,15 @@ export default function BlogPage() {
             <BookOpen className="w-5 h-5 text-[#F9A625]" />
             <span className="text-sm font-medium tracking-wide text-[#F9A625]">Insights & Vision</span>
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display leading-tight mb-8 text-[#2A3959]">
             Where Ideas
             <br />
             <span className="text-[#F9A625]">Achieve Excellence</span>
           </h1>
-          
+
           <p className="text-xl md:text-2xl mb-12 font-body max-w-4xl mx-auto text-neutral-600 leading-relaxed">
-            Behind every exceptional event lies a revolutionary idea. Explore the insights, strategies, and visionary thinking 
+            Behind every exceptional event lies a revolutionary idea. Explore the insights, strategies, and visionary thinking
             that transform ordinary occasions into extraordinary legacies.
           </p>
         </motion.div>
@@ -84,11 +85,10 @@ export default function BlogPage() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  selectedCategory === category 
-                    ? "bg-[#F9A625] text-black" 
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedCategory === category
+                    ? "bg-[#F9A625] text-black"
                     : "bg-white text-neutral-600 hover:bg-neutral-100 border border-neutral-200"
-                }`}
+                  }`}
               >
                 {category}
               </button>
@@ -140,7 +140,7 @@ export default function BlogPage() {
                         </div>
                       )}
                     </div>
-                    
+
                     <CardHeader className="p-6">
                       <div className="flex items-center gap-2 text-sm text-neutral-500 mb-4">
                         <Calendar className="w-4 h-4" />
@@ -157,24 +157,24 @@ export default function BlogPage() {
                           </>
                         )}
                       </div>
-                      
+
                       <CardTitle className="text-xl font-heading mb-4 text-[#2A3959] group-hover:text-[#F9A625] transition-colors line-clamp-2">
                         {post.title}
                       </CardTitle>
-                      
+
                       {post.excerpt && (
                         <CardDescription className="text-neutral-600 font-body leading-relaxed line-clamp-3 mb-4">
                           {post.excerpt}
                         </CardDescription>
                       )}
-                      
+
                       {post.author && (
                         <div className="text-sm text-[#F9A625] font-medium">
                           By {post.author}
                         </div>
                       )}
                     </CardHeader>
-                    
+
                     <CardContent className="px-6 pb-6">
                       <div className="flex items-center justify-between">
                         <div className="flex flex-wrap gap-2">
@@ -184,7 +184,7 @@ export default function BlogPage() {
                             </Badge>
                           ))}
                         </div>
-                        
+
                         <ArrowRight className="w-4 h-4 text-[#F9A625] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </CardContent>
@@ -237,8 +237,8 @@ export default function BlogPage() {
                   Get Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="border-white text-white hover:bg-white hover:text-[#2A3959] px-8 py-4 rounded-full text-lg"
                 >
                   View Our Work

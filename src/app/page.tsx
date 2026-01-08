@@ -1,6 +1,19 @@
 import { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/seo-utils";
-import HomeClient from "./home-client";
+import dynamic from "next/dynamic";
+
+// Dynamic import for code splitting - reduces initial bundle
+const HomeClient = dynamic(() => import("./home-client"), {
+  loading: () => (
+    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-amber-50/30 flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-16 h-16 border-4 border-[#F9A625] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p className="text-[#2A3959] text-lg font-medium">Loading Experience...</p>
+      </div>
+    </div>
+  ),
+  ssr: true, // Enable SSR for SEO
+});
 
 export const metadata: Metadata = generatePageMetadata({
   title: "White Massif - Trusted Corporate Event Management Company",
@@ -20,10 +33,13 @@ export const metadata: Metadata = generatePageMetadata({
   ],
   openGraph: {
     type: "website",
-    images: ["https://whitemassif.com/WM%20LOGO-01.png"]
+    images: ["/WM LOGO-01.png"]
   },
   path: "/"
 });
+
+// ISR: Revalidate every hour for better caching
+export const revalidate = 3600;
 
 export default function HomePage() {
   return <HomeClient />;

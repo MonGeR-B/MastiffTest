@@ -8,11 +8,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  ArrowRight, 
-  Phone, 
-  Mail, 
-  Calendar, 
+import {
+  ArrowRight,
+  Phone,
+  Mail,
+  Calendar,
   CheckCircle,
   Star,
   Users,
@@ -25,6 +25,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { DirectusService, type LandingPage } from '@/lib/directus-service';
 import { usePopup } from "@/components/popup-provider";
+import { logger } from '@/lib/logger';
 
 interface LandingPageProps {
   params: Promise<{
@@ -55,11 +56,10 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
     e.preventDefault();
     // Handle form submission here
     setFormSubmitted(true);
-    
+
     // Add tracking if tracking code exists
     if (landingPage?.tracking_code) {
-      // Inject tracking code or call analytics
-      console.log('Tracking conversion:', landingPage.tracking_code);
+      logger.log('Tracking conversion:', landingPage.tracking_code);
     }
   };
 
@@ -148,11 +148,11 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
               <Badge className="mb-6 bg-[#F9A625]/20 text-[#F9A625] border-[#F9A625]/30 px-4 py-2">
                 Premium Event Services
               </Badge>
-              
+
               <h1 className="text-4xl md:text-6xl font-display mb-6 leading-tight">
                 {landingPage.hero_title || landingPage.title}
               </h1>
-              
+
               {landingPage.hero_subtitle && (
                 <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
                   {landingPage.hero_subtitle}
@@ -160,16 +160,16 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
               )}
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
+                <Button
                   onClick={() => openPopup('service-cta')}
                   className="bg-[#F9A625] hover:bg-[#F9A625]/90 text-black font-semibold px-8 py-4 rounded-full text-lg"
                 >
                   {landingPage.cta_text || "Get Started"}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                
-                <Button 
-                  variant="outline" 
+
+                <Button
+                  variant="outline"
                   className="border-white text-white hover:bg-white hover:text-[#2A3959] px-8 py-4 rounded-full text-lg"
                   onClick={() => setShowVideo(true)}
                 >
@@ -195,7 +195,7 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
                       <p className="text-neutral-600 mb-6">
                         Let&apos;s discuss your vision and create something extraordinary together.
                       </p>
-                      
+
                       <form onSubmit={handleFormSubmit} className="space-y-4">
                         {landingPage.form_fields?.map((field) => (
                           <div key={field.name}>
@@ -234,16 +234,16 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
                             )}
                           </div>
                         ))}
-                        
-                        <Button 
-                          type="submit" 
+
+                        <Button
+                          type="submit"
                           className="w-full bg-[#F9A625] hover:bg-[#F9A625]/90 text-black font-semibold py-3 rounded-full"
                         >
                           Get Free Consultation
                           <ArrowRight className="ml-2 w-4 h-4" />
                         </Button>
                       </form>
-                      
+
                       <div className="mt-6 text-center text-sm text-neutral-500">
                         <div className="flex items-center justify-center gap-4">
                           <div className="flex items-center gap-1">
@@ -294,7 +294,7 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
       {landingPage.content && (
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <div 
+            <div
               className="prose prose-lg max-w-none text-neutral-700"
               dangerouslySetInnerHTML={{ __html: landingPage.content }}
             />
@@ -313,7 +313,7 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
               From Fortune 500 corporations to growing startups
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-4 gap-8 text-center">
             {[
               { icon: Users, number: "1000+", label: "Events Delivered" },
@@ -359,7 +359,7 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
                 {landingPage.hero_subtitle}
               </p>
             )}
-            <Button 
+            <Button
               className="bg-[#F9A625] hover:bg-[#F9A625]/90 text-black font-bold px-12 py-6 rounded-full text-xl"
               onClick={() => openPopup('event-cta')}
             >
@@ -391,7 +391,7 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
                 {landingPage.hero_subtitle}
               </p>
             )}
-            <Button 
+            <Button
               className="bg-[#2A3959] hover:bg-[#2A3959]/90 text-white font-bold px-12 py-6 rounded-full text-xl"
               onClick={() => openPopup('campaign-cta')}
             >
@@ -422,7 +422,7 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
                 {landingPage.hero_subtitle}
               </p>
             )}
-            <Button 
+            <Button
               className="bg-[#F9A625] hover:bg-[#F9A625]/90 text-black font-semibold px-8 py-4 rounded-full text-lg"
               onClick={() => openPopup('general-cta')}
             >
@@ -432,11 +432,11 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
           </motion.div>
         </div>
       </section>
-      
+
       {landingPage.content && (
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div 
+            <div
               className="prose prose-lg max-w-none text-neutral-700"
               dangerouslySetInnerHTML={{ __html: landingPage.content }}
             />
@@ -449,7 +449,7 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
   return (
     <>
       {renderTemplate()}
-      
+
       {/* Video Modal */}
       {showVideo && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
@@ -470,7 +470,7 @@ export default function LandingPageTemplate({ params }: LandingPageProps) {
           </div>
         </div>
       )}
-      
+
       {/* Tracking Script */}
       {landingPage.tracking_code && (
         <script dangerouslySetInnerHTML={{ __html: landingPage.tracking_code }} />

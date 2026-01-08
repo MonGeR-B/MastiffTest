@@ -21,7 +21,7 @@ export const metadata: Metadata = generatePageMetadata({
   ],
   openGraph: {
     type: "website",
-    images: ["https://whitemassif.com/WM%20LOGO-01.png"]
+    images: ["/WM LOGO-01.png"]
   },
   path: "/contact"
 });

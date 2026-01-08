@@ -19,14 +19,14 @@ export class HomepageMediaService {
   }
 
   static getPortfolioImages() {
-    // Get the numbered home page images for portfolio
+    // Use portfolio images - actual event photos from portfolio folder
     const portfolioImages = [
-      '/assets/images/home/01-01.png',
-      '/assets/images/home/2-02.png',
-      '/assets/images/home/3-03.png',
-      '/assets/images/home/4-04.png',
-      '/assets/images/home/5-05.png',
-      '/assets/images/home/6-06.png'
+      '/assets/images/portfolio/92A2004-scaled-1.jpg',
+      '/assets/images/portfolio/DSC02450-scaled-1.jpg',
+      '/assets/images/portfolio/PSGF6309-1-scaled-1-1024x1024.jpg',
+      '/assets/images/portfolio/Untitled-design-19-1.png',
+      '/assets/images/portfolio/Untitled-design-23-1.png',
+      '/assets/images/services/DSC01247-scaled-1.jpg'
     ];
 
     return portfolioImages;

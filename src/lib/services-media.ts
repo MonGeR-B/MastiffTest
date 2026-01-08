@@ -1,4 +1,3 @@
-import mediaUrls from '@/../../media_urls.json';
 
 export class ServicesMediaService {
   static getServicesImages() {

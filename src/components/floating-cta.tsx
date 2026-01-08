@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Phone, Mail } from 'lucide-react';
 import { usePopup } from './popup-provider';
+import { logger } from '@/lib/logger';
 
 export default function FloatingCTA() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -30,7 +31,7 @@ export default function FloatingCTA() {
     } else {
       // Open WhatsApp chat
       const whatsappUrl = 'https://wa.me/919620257941?text=Hello%20White%20Massif!%20I%20would%20like%20to%20inquire%20about%20your%20event%20management%20services.';
-      console.log('Opening WhatsApp:', whatsappUrl);
+      logger.log('Opening WhatsApp:', whatsappUrl);
       window.location.href = whatsappUrl;
     }
   };

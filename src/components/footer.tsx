@@ -6,10 +6,10 @@ import { usePopup } from '@/components/popup-provider';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { motion } from 'framer-motion';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
+import {
+  MapPin,
+  Phone,
+  Mail,
   Clock,
   Instagram,
   Facebook,
@@ -32,7 +32,7 @@ export default function Footer() {
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubscribing(true);
-    
+
     try {
       if (!FormService.validateEmail(email)) {
         alert('Please enter a valid email address.');
@@ -129,7 +129,7 @@ export default function Footer() {
                   Join 5000+ event professionals receiving our monthly newsletter with trends, tips, and exclusive offers.
                 </p>
               </div>
-              
+
               <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
                 <Input
                   type="email"
@@ -165,9 +165,9 @@ export default function Footer() {
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto mobile-container py-12 lg:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            
+
             {/* Company Info */}
-            <motion.div 
+            <motion.div
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
@@ -176,9 +176,9 @@ export default function Footer() {
             >
               <div className="mb-6">
                 <div className="flex justify-start mb-4">
-                  <img 
-                    src="/WM LOGO-05.png" 
-                    alt="White Massif Event Management Logo" 
+                  <img
+                    src="/WM LOGO-05.png"
+                    alt="White Massif Event Management Logo"
                     className="h-8 w-auto object-contain brightness-0 invert"
                   />
                 </div>
@@ -206,7 +206,7 @@ export default function Footer() {
             </motion.div>
 
             {/* Services */}
-            <motion.div 
+            <motion.div
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
@@ -227,7 +227,7 @@ export default function Footer() {
             </motion.div>
 
             {/* Quick Links */}
-            <motion.div 
+            <motion.div
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
@@ -249,14 +249,14 @@ export default function Footer() {
             </motion.div>
 
             {/* Contact Information */}
-            <motion.div 
+            <motion.div
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
               variants={fadeInUp}
             >
               <h4 className="font-bold text-lg mb-6">Get In Touch</h4>
-              
+
               <div className="space-y-6">
                 {/* Email */}
                 <div className="flex items-start space-x-3">
@@ -272,7 +272,7 @@ export default function Footer() {
                 <div className="flex items-start space-x-3">
                   <Phone className="w-5 h-5 text-[#F9A625] mt-1 flex-shrink-0" />
                   <div>
-                    <button 
+                    <button
                       onClick={() => openPopup('footer-contact')}
                       className="text-white/80 hover:text-[#F9A625] transition-colors"
                     >
@@ -283,15 +283,16 @@ export default function Footer() {
 
                 {/* Google Maps */}
                 <div className="mt-6">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.9021361290365!2d77.5800194!3d13.0419009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae171688e704a9%3A0x893beaaafc41d513!2sWhite%20Massif%20Event%20Management!5e0!3m2!1sen!2sin!4v1754391440612!5m2!1sen!2sin" 
-                    width="100%" 
-                    height="200" 
-                    style={{border: 0}} 
-                    allowFullScreen 
-                    loading="lazy" 
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.9021361290365!2d77.5800194!3d13.0419009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae171688e704a9%3A0x893beaaafc41d513!2sWhite%20Massif%20Event%20Management!5e0!3m2!1sen!2sin!4v1754391440612!5m2!1sen!2sin"
+                    width="100%"
+                    height="200"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     className="rounded-lg"
+                    title="Google Maps - White Massif Office Location"
                   />
                 </div>
               </div>
@@ -313,7 +314,7 @@ export default function Footer() {
               <div className="text-white/60 text-sm text-center md:text-left">
                 © {new Date().getFullYear()} White Massif Event Management. All rights reserved.
               </div>
-              
+
               <div className="flex flex-wrap items-center gap-6 text-sm">
                 <span className="text-white/60">
                   Bangalore, Karnataka, India

@@ -1,164 +1,154 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { Play, AlertCircle, Loader2 } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 interface ProgressiveVideoProps {
   src: string;
   poster?: string;
+  fallbackImage?: string;
   className?: string;
-  autoPlay?: boolean;
+  style?: React.CSSProperties;
   muted?: boolean;
   loop?: boolean;
+  autoPlay?: boolean;
   playsInline?: boolean;
-  style?: React.CSSProperties;
-  fallbackImage?: string;
-  onLoadStart?: () => void;
-  onCanPlay?: () => void;
-  onError?: (error: string) => void;
-  onLoadedData?: () => void;
+  controls?: boolean;
+  onError?: (error: any) => void;
+  priority?: boolean; // Control loading priority
+  preload?: 'none' | 'metadata' | 'auto'; // Control preload behavior
+  captionSrc?: string; // VTT caption file
+  captionLabel?: string; // Caption label
 }
 
 export default function ProgressiveVideo({
   src,
   poster,
+  fallbackImage,
   className = '',
-  autoPlay = true,
+  style = {},
   muted = true,
   loop = true,
+  autoPlay = true,
   playsInline = true,
-  style,
-  fallbackImage,
-  onLoadStart,
-  onCanPlay,
+  controls = false,
   onError,
-  onLoadedData
+  priority = false, // Default: lazy load
+  preload = 'none', // Default: don't preload for performance
+  captionSrc,
+  captionLabel = 'English',
 }: ProgressiveVideoProps) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [canPlay, setCanPlay] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(priority); // Load immediately if priority
   const videoRef = useRef<HTMLVideoElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    // If priority, load immediately
+    if (priority) {
+      setShouldLoad(true);
+      return;
+    }
 
-    const handleLoadStart = () => {
-      setIsLoading(true);
-      onLoadStart?.();
-    };
+    // Otherwise, use Intersection Observer for lazy loading
+    if (!observerRef.current && videoRef.current) {
+      observerRef.current = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !shouldLoad) {
+              setShouldLoad(true);
+              // Disconnect once loaded
+              if (observerRef.current) {
+                observerRef.current.disconnect();
+              }
+            }
+          });
+        },
+        {
+          rootMargin: '100px', // Start loading 100px before entering viewport
+          threshold: 0.1,
+        }
+      );
 
-    const handleCanPlay = () => {
-      setCanPlay(true);
-      setIsLoading(false);
-      onCanPlay?.();
-    };
-
-    const handleError = () => {
-      setHasError(true);
-      setIsLoading(false);
-      onError?.('Video failed to load');
-    };
-
-    const handleLoadedData = () => {
-      onLoadedData?.();
-    };
-
-    video.addEventListener('loadstart', handleLoadStart);
-    video.addEventListener('canplay', handleCanPlay);
-    video.addEventListener('error', handleError);
-    video.addEventListener('loadeddata', handleLoadedData);
+      observerRef.current.observe(videoRef.current);
+    }
 
     return () => {
-      video.removeEventListener('loadstart', handleLoadStart);
-      video.removeEventListener('canplay', handleCanPlay);
-      video.removeEventListener('error', handleError);
-      video.removeEventListener('loadeddata', handleLoadedData);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
     };
-  }, [onLoadStart, onCanPlay, onError, onLoadedData]);
+  }, [priority, shouldLoad]);
 
-  const playVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        setHasError(true);
-      });
+  const handleError = (error: any) => {
+    setHasError(true);
+    if (onError) {
+      onError(error);
     }
   };
 
+  const handleLoadedData = () => {
+    setIsLoaded(true);
+  };
+
+  // Show fallback image if error or while loading
+  if (hasError && fallbackImage) {
+    return (
+      <div className={`relative ${className}`} style={style}>
+        <Image
+          src={fallbackImage}
+          alt="Video fallback"
+          fill
+          className="object-cover"
+          priority={priority}
+        />
+      </div>
+    );
+  }
+
   return (
-    <div className="relative w-full h-full">
-      {/* Video Element */}
+    <div className={`relative ${className}`} style={style}>
+      {/* Poster/Placeholder while video loads */}
+      {!isLoaded && poster && (
+        <Image
+          src={poster}
+          alt="Video poster"
+          fill
+          className="object-cover"
+          priority={priority}
+        />
+      )}
+
+      {/* Video element - only render src when shouldLoad is true */}
       <video
         ref={videoRef}
-        className={`absolute inset-0 w-full h-full object-contain md:object-cover transition-opacity duration-500 ${
-          canPlay ? 'opacity-100' : 'opacity-0'
-        } ${className}`}
-        autoPlay={autoPlay}
+        className="absolute inset-0 w-full h-full object-cover"
         muted={muted}
         loop={loop}
+        autoPlay={autoPlay && shouldLoad} // Only autoplay when loaded
         playsInline={playsInline}
-        preload="none"
+        controls={controls}
         poster={poster}
-        style={style}
+        preload={preload} // Respect preload setting
+        onLoadedData={handleLoadedData}
+        onError={handleError}
+        style={{
+          opacity: isLoaded ? 1 : 0,
+          transition: 'opacity 0.5s ease-in-out',
+        }}
       >
-        <source src={src} type="video/mp4" />
+        {shouldLoad && <source src={src} type="video/mp4" />}
+        {captionSrc && (
+          <track
+            kind="captions"
+            src={captionSrc}
+            srcLang="en"
+            label={captionLabel}
+          />
+        )}
         Your browser does not support the video tag.
       </video>
-
-      {/* Loading State */}
-      {isLoading && !hasError && (
-        <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
-          {poster ? (
-            <img 
-              src={poster} 
-              alt="Video poster"
-              className="absolute inset-0 w-full h-full object-contain md:object-cover"
-            />
-          ) : fallbackImage ? (
-            <img 
-              src={fallbackImage} 
-              alt="Video fallback"
-              className="absolute inset-0 w-full h-full object-contain md:object-cover"
-            />
-          ) : (
-            <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 w-full h-full" />
-          )}
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div className="text-white text-center">
-              <Loader2 className="w-8 h-8 animate-spin mx-auto mb-2" />
-              <p className="text-sm">Loading video...</p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Error State */}
-      {hasError && (
-        <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
-          {fallbackImage ? (
-            <img 
-              src={fallbackImage} 
-              alt="Video fallback"
-              className="absolute inset-0 w-full h-full object-contain md:object-cover"
-            />
-          ) : (
-            <div className="bg-gradient-to-br from-neutral-800 to-neutral-900 w-full h-full" />
-          )}
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div className="text-white text-center">
-              <AlertCircle className="w-8 h-8 mx-auto mb-2 text-yellow-400" />
-              <p className="text-sm mb-3">Video failed to load</p>
-              <button 
-                onClick={playVideo}
-                className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors text-sm"
-              >
-                <Play className="w-4 h-4" />
-                Retry
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

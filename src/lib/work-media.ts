@@ -1,4 +1,5 @@
 import { GalleryImage, PortfolioItem } from '@/types/gallery';
+import { logger } from './logger';
 
 const DIRECTUS_URL = process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055';
 
@@ -36,19 +37,19 @@ export class WorkMediaService {
   // Fetch portfolio projects from Directus
   static async fetchPortfolioProjects(): Promise<DirectusProject[]> {
     try {
-      console.log('🔍 Fetching portfolio projects from Directus...');
-      
+      logger.log('🔍 Fetching portfolio projects from Directus...');
+
       const url = process.env.NEXT_PUBLIC_DIRECTUS_URL;
       const token = process.env.NEXT_PUBLIC_DIRECTUS_TOKEN;
-      
-      console.log('🔗 URL:', url);
-      console.log('🔑 Token:', token ? `${token.substring(0, 10)}...` : 'NOT FOUND');
-      
+
+      logger.log('🔗 URL:', url);
+      logger.log('🔑 Token:', token ? `${token.substring(0, 10)}...` : 'NOT FOUND');
+
       if (!url || !token) {
-        console.error('❌ Missing Directus configuration');
+        logger.error('Missing Directus configuration');
         throw new Error('Directus URL or token not configured');
       }
-      
+
       // Try multiple query approaches
       const queries = [
         // Primary query with full relations
@@ -60,11 +61,11 @@ export class WorkMediaService {
         // Basic query without status filter
         `${url}/items/portfolio_projects?fields=*&sort=sort_order`
       ];
-      
+
       for (let i = 0; i < queries.length; i++) {
         const queryUrl = queries[i];
-        console.log(`🔍 Trying query ${i + 1}:`, queryUrl);
-        
+        logger.log(`🔍 Trying query ${i + 1}:`, queryUrl);
+
         try {
           const response = await fetch(queryUrl, {
             headers: {
@@ -73,34 +74,33 @@ export class WorkMediaService {
             }
           });
 
-          console.log(`📡 Query ${i + 1} Response status:`, response.status);
+          logger.log(`📡 Query ${i + 1} Response status:`, response.status);
 
           if (response.ok) {
             const data = await response.json();
-            console.log(`📊 Query ${i + 1} Fetched projects:`, data);
-            
+            logger.log(`📊 Query ${i + 1} Fetched projects:`, data);
+
             // Handle both formats: {data: [...]} and [...]
             const projects = data.data || data;
-            console.log('📝 Number of projects:', projects?.length || 0);
-            
+            logger.log('📝 Number of projects:', projects?.length || 0);
+
             if (projects && projects.length > 0) {
-              console.log('✅ Successfully fetched projects with query', i + 1);
+              logger.log('✅ Successfully fetched projects with query', i + 1);
               return projects;
             }
           } else {
             const errorText = await response.text();
-            console.error(`❌ Query ${i + 1} Error response:`, errorText);
+            logger.error(`Query ${i + 1} Error response:`, errorText);
           }
         } catch (queryError) {
-          console.error(`❌ Query ${i + 1} failed:`, queryError);
+          logger.error(`Query ${i + 1} failed:`, queryError);
         }
       }
-      
-      console.log('⚠️ All queries failed, returning empty array as requested');
+
+      logger.warn('All queries failed, returning empty array');
       return [];
     } catch (error) {
-      console.error('❌ Error fetching portfolio projects:', error);
-      console.log('🔄 Returning empty array due to error as requested');
+      logger.error('Error fetching portfolio projects:', error);
       return [];
     }
   }
@@ -179,11 +179,11 @@ export class WorkMediaService {
     if (mimeType && mimeType.startsWith('video/')) {
       return true;
     }
-    
+
     // Fallback to file extension check
     const videoExtensions = ['.mp4', '.webm', '.ogg', '.avi', '.mov', '.wmv', '.flv', '.mkv'];
     const lowercaseFilename = filename.toLowerCase();
-    
+
     return videoExtensions.some(ext => lowercaseFilename.endsWith(ext));
   }
 
@@ -199,75 +199,75 @@ export class WorkMediaService {
     // Create a data URL for a simple video thumbnail placeholder
     return "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjE1MCIgY3k9IjEwMCIgcj0iMzAiIGZpbGw9IiNGOUE2MjUiLz4KPHA+bHlnb24gcG9pbnRzPSIxNDAsODUgMTQwLDExNSAxNjUsMTAwIiBmaWxsPSJ3aGl0ZSIvPgo8dGV4dCB4PSIxNTAiIHk9IjE2MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjc3NDgzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5WaWRlbyBDbGlwPC90ZXh0Pgo8L3N2Zz4K";
   }
-  
+
   static async getWorkImages() {
     const projects = await this.fetchPortfolioProjects();
     const workImageMap: Record<string, string[]> = {};
-    
+
     projects.forEach(project => {
       const key = project.slug.toLowerCase().replace(/\s+/g, '');
       if (project.gallery) {
-        workImageMap[key] = project.gallery.map(file => 
+        workImageMap[key] = project.gallery.map(file =>
           this.getDirectusFileUrl(file.id, 'quality=85&width=800&height=600')
         );
       }
     });
-    
+
     return workImageMap;
   }
-  
+
   static async getWorkHeroImages() {
     const projects = await this.fetchPortfolioProjects();
     return projects.map(project => ({
-      src: project.featured_image 
+      src: project.featured_image
         ? this.getDirectusFileUrl(project.featured_image.id, 'quality=85&width=1200&height=800')
-        : project.gallery?.[0] 
+        : project.gallery?.[0]
           ? this.getDirectusFileUrl(project.gallery[0].id, 'quality=85&width=1200&height=800')
           : '',
       alt: project.title,
       category: project.category.name
     })).filter(item => item.src);
   }
-  
+
   static async getPortfolioItems(): Promise<PortfolioItem[]> {
     const projects = await this.fetchPortfolioProjects();
-    console.log('Processing projects:', projects);
-    
+    logger.log('Processing projects:', projects);
+
     return projects.map(project => {
-      console.log('Processing project:', project.title, project);
-      
+      logger.log('Processing project:', project.title, project);
+
       const featuredImage = project.featured_image;
-      
+
       // Process gallery items - handle both images and videos from the junction table structure
-      const galleryImages: GalleryImage[] = project.gallery && Array.isArray(project.gallery) 
+      const galleryImages: GalleryImage[] = project.gallery && Array.isArray(project.gallery)
         ? project.gallery.map((item: any): GalleryImage => {
-            // Handle junction table structure: gallery.directus_files_id.*
-            const file = item.directus_files_id || item;
-            const mimeType = file.type || '';
-            const filename = file.filename_download || '';
-            const isVideo = this.isVideoFile(mimeType, filename);
-            
-            return {
-              id: file.id,
-              url: this.getDirectusFileUrl(file.id),
-              thumbnail: isVideo 
-                ? this.getVideoThumbnailUrl(file.id) // Use special video thumbnail method
-                : this.getDirectusFileUrl(file.id, 'quality=75&width=300&height=200'),
-              title: file.title || project.title,
-              alt: file.title || `${project.title} ${isVideo ? 'video' : 'image'}`,
-              type: isVideo ? 'video' : 'image',
-              mimeType,
-              filename,
-              fallbackThumbnail: isVideo ? this.getVideoFallbackThumbnail() : undefined
-            };
-          })
+          // Handle junction table structure: gallery.directus_files_id.*
+          const file = item.directus_files_id || item;
+          const mimeType = file.type || '';
+          const filename = file.filename_download || '';
+          const isVideo = this.isVideoFile(mimeType, filename);
+
+          return {
+            id: file.id,
+            url: this.getDirectusFileUrl(file.id),
+            thumbnail: isVideo
+              ? this.getVideoThumbnailUrl(file.id) // Use special video thumbnail method
+              : this.getDirectusFileUrl(file.id, 'quality=75&width=300&height=200'),
+            title: file.title || project.title,
+            alt: file.title || `${project.title} ${isVideo ? 'video' : 'image'}`,
+            type: isVideo ? 'video' : 'image',
+            mimeType,
+            filename,
+            fallbackThumbnail: isVideo ? this.getVideoFallbackThumbnail() : undefined
+          };
+        })
         : [];
-      
+
       return {
         title: project.title,
         year: project.year ? project.year.toString() : '2024',
         category: project.category?.name || 'Unknown',
-        image: featuredImage 
+        image: featuredImage
           ? this.getDirectusFileUrl(featuredImage.id, 'quality=85&width=600&height=400')
           : '/placeholder-image.jpg',
         description: project.description,
@@ -280,15 +280,15 @@ export class WorkMediaService {
       };
     });
   }
-  
+
   static async getProjectImages(projectSlug: string): Promise<string[]> {
     const projects = await this.fetchPortfolioProjects();
     const project = projects.find(p => p.slug === projectSlug);
-    return project?.gallery?.map(file => 
+    return project?.gallery?.map(file =>
       this.getDirectusFileUrl(file.id, 'quality=85&width=800&height=600')
     ) || [];
   }
-  
+
   static getProjectVideos() {
     // Keep static video data for now - can be moved to Directus later
     return [

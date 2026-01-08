@@ -4,9 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { 
-  ArrowRight, 
-  Users, 
+import Image from "next/image";
+import {
+  ArrowRight,
+  Users,
   Trophy,
   Target,
   CheckCircle,
@@ -53,7 +54,7 @@ export default function HomeClient() {
     console.log('🎬 Hero Video URL:', heroVideo);
     console.log('🎯 Service Images loaded:', Object.keys(serviceImages).length, 'images');
     console.log('🎨 Portfolio Images loaded:', portfolioImages.length, 'images');
-    
+
     // Test video URL accessibility
     console.log('🧪 Testing hero video URL...');
     fetch(heroVideo, { method: 'HEAD' })
@@ -65,7 +66,7 @@ export default function HomeClient() {
       .catch(err => console.error('❌ Video HEAD request failed:', err));
   }
 
-  // Event services data with DYNAMIC event photos from Supabase
+  // Event services data with local event photos
   const services = [
     {
       id: "01",
@@ -78,7 +79,7 @@ export default function HomeClient() {
       image: serviceImages.businessEvents
     },
     {
-      id: "02", 
+      id: "02",
       title: "Celebration Galore",
       description: "Celebrate your success with style and distinction. At White Massif Corporate event management, we understand that corporate celebrations go beyond just marking a date on the calendar.",
       icon: Sparkles,
@@ -163,24 +164,23 @@ export default function HomeClient() {
             src={heroVideo}
             poster="/assets/images/services/DSC02447-scaled-1.jpg"
             fallbackImage="/assets/images/services/DSC02447-scaled-1.jpg"
+            captionSrc="/assets/captions/hero-video.vtt"
+            captionLabel="English"
             className="absolute inset-0 w-full h-full"
             style={{
               zIndex: 1,
               willChange: 'auto',
               backfaceVisibility: 'hidden'
             }}
-            onLoadStart={() => console.log('🎬 Video load started:', heroVideo)}
-            onCanPlay={() => console.log('✅ Video can play:', heroVideo)}
-            onError={(error) => console.error('❌ Video error:', heroVideo, error)}
-            onLoadedData={() => console.log('📹 Video data loaded:', heroVideo)}
+            onError={(error) => console.error('Video playback error:', error)}
           />
-          
+
           {/* Subtle overlay for depth */}
           <div className="absolute inset-0 bg-black/10 z-10" />
         </div>
 
         {/* Minimal Top Badge */}
-        <motion.div 
+        <motion.div
           className="absolute top-8 left-1/2 transform -translate-x-1/2 z-20"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -193,7 +193,7 @@ export default function HomeClient() {
         </motion.div>
 
         {/* Scroll Indicator */}
-        <motion.div 
+        <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
@@ -218,7 +218,7 @@ export default function HomeClient() {
             className="text-center"
           >
             {/* Premium Badge */}
-            <motion.div 
+            <motion.div
               className="inline-flex items-center space-x-2 px-6 py-3 glass rounded-full mb-8 micro-glow"
               whileHover={{ scale: 1.05 }}
             >
@@ -227,7 +227,7 @@ export default function HomeClient() {
             </motion.div>
 
             {/* Main Headline */}
-            <motion.h1 
+            <motion.h1
               className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-display leading-[0.9] mb-8 text-[#2A3959]"
               initial={{ opacity: 0, y: 50 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -236,8 +236,8 @@ export default function HomeClient() {
               <span className="block">Crafting Corporate Gatherings</span>
               <span className="block">into <span className="text-[#F9A625]">Remarkable</span> Experiences</span>
             </motion.h1>
-            
-            <motion.p 
+
+            <motion.p
               className="text-base md:text-lg lg:text-xl mb-12 font-body max-w-5xl mx-auto text-neutral-600 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -247,13 +247,13 @@ export default function HomeClient() {
             </motion.p>
 
             {/* CTA Section */}
-            <motion.div 
+            <motion.div
               className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
               initial={{ opacity: 0, y: 30 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              <Button 
+              <Button
                 onClick={() => openPopup('hero-cta')}
                 className="btn-primary group px-8 py-4 text-lg"
               >
@@ -261,7 +261,7 @@ export default function HomeClient() {
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               <Link href="/portfolio">
-                <Button 
+                <Button
                   variant="outline"
                   className="border-2 border-[#2A3959] text-[#2A3959] hover:bg-[#2A3959] hover:text-white hover:border-[#2A3959] font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 group shadow-lg hover:shadow-xl"
                 >
@@ -272,7 +272,7 @@ export default function HomeClient() {
             </motion.div>
 
             {/* Key Highlights */}
-            <motion.div 
+            <motion.div
               className="flex flex-wrap items-center justify-center gap-8 text-sm font-body"
               initial={{ opacity: 0, y: 20 }}
               animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -319,56 +319,44 @@ export default function HomeClient() {
             {services.map((service) => {
               const IconComponent = service.icon;
               return (
-                <motion.div 
-                  key={service.id} 
-                  variants={fadeInUp} 
+                <motion.div
+                  key={service.id}
+                  variants={fadeInUp}
                   className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group max-w-md mx-auto w-full"
                   whileHover={{ y: -8 }}
                 >
                   {/* Event Image */}
                   <div className="relative h-64 overflow-hidden bg-[#2A3959]">
-                    <img
+                    <Image
                       src={service.image}
                       alt={service.title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => {
-                        console.error(`Failed to load service image: ${service.image}`);
-                        // Fallback to a placeholder color gradient instead of hiding
-                        e.currentTarget.style.display = 'none';
-                        const parent = e.currentTarget.parentElement;
-                        if (parent) {
-                          parent.style.background = `bg-gradient-to-br from-[#2A3959] to-[#1E2A3A]`;
-                        }
-                      }}
-                      onLoad={() => {
-                        if (process.env.NODE_ENV === 'development') {
-                          console.log(`✅ Service image loaded: ${service.title}`);
-                        }
-                      }}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={85}
+                      priority={false}
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient} opacity-40`} />
-                    
+
                     {/* Floating Icon */}
                     <div className="absolute top-6 left-6">
                       <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                         <IconComponent className="w-7 h-7 text-white" />
                       </div>
                     </div>
-                    
+
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-6 lg:p-8">
                     <h3 className="text-xl lg:text-2xl font-bold mb-4 text-[#2A3959] group-hover:text-[#F9A625] transition-colors">
                       {service.title}
                     </h3>
-                    
+
                     <p className="text-gray-600 mb-6 leading-relaxed text-sm lg:text-base">
                       {service.description}
                     </p>
-                    
+
                     {/* Features */}
                     <div className="space-y-3 mb-8">
                       {service.features.map((feature, idx) => (
@@ -378,15 +366,15 @@ export default function HomeClient() {
                         </div>
                       ))}
                     </div>
-                    
+
                   </div>
                 </motion.div>
               );
             })}
           </div>
-          
+
           {/* CTA */}
-          <motion.div 
+          <motion.div
             className="text-center mt-12 lg:mt-16"
             variants={fadeInUp}
             initial="initial"
@@ -394,8 +382,8 @@ export default function HomeClient() {
             viewport={{ once: true }}
           >
             <Link href="/services">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-[#F9A625] hover:bg-[#F9A625]/90 text-black font-semibold px-8 py-4 rounded-full text-lg"
               >
                 Explore All Services
@@ -445,26 +433,14 @@ export default function HomeClient() {
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => {
-                      console.error(`Failed to load portfolio image: ${item.image}`);
-                      // Fallback to gradient background
-                      e.currentTarget.style.display = 'none';
-                      const parent = e.currentTarget.parentElement;
-                      if (parent) {
-                        parent.style.background = 'linear-gradient(135deg, #2A3959 0%, #F9A625 100%)';
-                      }
-                    }}
-                    onLoad={() => {
-                      if (process.env.NODE_ENV === 'development') {
-                        console.log(`✅ Portfolio image loaded: ${item.title}`);
-                      }
-                    }}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={85}
+                    priority={false}
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
                   <div className="absolute bottom-6 left-6 text-white">
@@ -475,7 +451,7 @@ export default function HomeClient() {
             })}
           </div>
 
-          <motion.div 
+          <motion.div
             className="text-center mt-12 lg:mt-16"
             variants={fadeInUp}
             initial="initial"
@@ -483,9 +459,9 @@ export default function HomeClient() {
             viewport={{ once: true }}
           >
             <Link href="/portfolio">
-              <Button 
+              <Button
                 variant="outline"
-                size="lg" 
+                size="lg"
                 className="border-[#F9A625] text-[#F9A625] hover:bg-[#F9A625] hover:text-black px-8 py-4 rounded-full text-lg"
               >
                 View Portfolio
@@ -520,21 +496,21 @@ export default function HomeClient() {
             {whyChooseUs.map((item, index) => {
               const IconComponent = item.icon;
               return (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
                   className="text-center group max-w-sm mx-auto w-full"
-              >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#F9A625] to-[#2A3959] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                >
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-[#F9A625] to-[#2A3959] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <IconComponent className="w-8 h-8 text-white" />
-                </div>
+                  </div>
                   <h3 className="text-xl lg:text-2xl font-bold mb-4 text-[#2A3959] group-hover:text-[#F9A625] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed text-sm lg:text-base">
                     {item.description}
                   </p>
-              </motion.div>
+                </motion.div>
               );
             })}
           </div>
@@ -570,7 +546,7 @@ export default function HomeClient() {
                 color: "from-[#F9A625] to-[#2A3959]"
               },
               {
-                step: "02", 
+                step: "02",
                 title: "Strategic Sculpting",
                 description: "Your vision meets our expertise. Strategies carved with precision. Concepts crafted with care.",
                 color: "from-[#2A3959] to-[#F9A625]"
@@ -597,20 +573,20 @@ export default function HomeClient() {
                 {index < 3 && (
                   <div className="hidden lg:block absolute top-12 left-full w-8 h-0.5 bg-gradient-to-r from-[#F9A625] to-transparent z-10"></div>
                 )}
-                
+
                 <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:border-[#F9A625]/50 transition-all duration-300 hover:bg-white/15 group-hover:scale-105 h-full">
                   <div className="text-center">
                     {/* Step Number */}
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${process.color} flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       <span className="text-2xl font-bold text-white">{process.step}</span>
                     </div>
-                    
-                    
+
+
                     {/* Title */}
                     <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#F9A625] transition-colors duration-300">
                       {process.title}
                     </h3>
-                    
+
                     {/* Description */}
                     <p className="text-gray-300 text-sm leading-relaxed">
                       {process.description}
@@ -641,7 +617,7 @@ export default function HomeClient() {
               <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-8 leading-relaxed">
                 Get a free consultation and quote for your corporate event. Professional planning guaranteed.
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                 {[
                   { icon: Users, title: "1000+ Events", desc: "Executed with precision" },
@@ -656,15 +632,15 @@ export default function HomeClient() {
                       <div>
                         <h4 className="font-semibold mb-1">{feature.title}</h4>
                         <p className="text-white/80 text-sm">{feature.desc}</p>
-                    </div>
+                      </div>
                     </div>
                   );
                 })}
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/portfolio">
-                  <Button 
+                  <Button
                     size="lg"
                     className="bg-[#F9A625] hover:bg-[#F9A625]/90 text-black font-heading px-8 py-4 rounded-full text-lg"
                   >
@@ -673,9 +649,9 @@ export default function HomeClient() {
                   </Button>
                 </Link>
                 <Link href="tel:+919900141155">
-                  <Button 
+                  <Button
                     variant="outline"
-                    size="lg" 
+                    size="lg"
                     className="border-white text-white hover:bg-white hover:text-[#2A3959] px-8 py-4 rounded-full text-lg flex items-center"
                   >
                     <Phone className="mr-2 h-5 w-5" />
@@ -684,7 +660,7 @@ export default function HomeClient() {
                 </Link>
               </div>
             </motion.div>
-            
+
             <motion.div variants={fadeInUp} className="relative">
               {/* Enhanced visual elements for better balance */}
               <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10">
@@ -699,7 +675,7 @@ export default function HomeClient() {
                     Our experienced professionals are ready to bring your vision to life with strategic planning and creative excellence.
                   </p>
                   <Link href="/team">
-                    <Button 
+                    <Button
                       variant="outline"
                       className="border-[#F9A625] text-[#F9A625] hover:bg-[#F9A625] hover:text-black px-8 py-4 rounded-full transition-all duration-300"
                     >
@@ -709,7 +685,7 @@ export default function HomeClient() {
                   </Link>
                 </div>
               </div>
-              
+
               {/* Decorative elements */}
               <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#F9A625]/10 rounded-full blur-3xl" />
               <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white/5 rounded-full blur-3xl" />
