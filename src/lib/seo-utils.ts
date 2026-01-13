@@ -135,9 +135,9 @@ export function generateLocalBusinessSchema() {
     "@id": `${companyInfo.url}/#localbusiness`,
     name: companyInfo.name,
     image: [
-      encodeURI("/assets/media/Services/Services- Landing page 1.jpg"),
-      encodeURI("/assets/media/Services/Hybrid Events .jpg"),
-      encodeURI("/assets/media/Services/Celebration Galore.jpg")
+      "/assets/media/Services/Services- Landing page 1.jpg",
+      "/assets/media/Services/Hybrid Events .jpg",
+      "/assets/media/Services/Celebration Galore.jpg"
     ],
     url: companyInfo.url,
     telephone: companyInfo.phone,
