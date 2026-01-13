@@ -2,14 +2,14 @@
 export class ServicesMediaService {
   static getServicesImages() {
     const serviceImageMap: Record<string, string> = {
-      businessEvents: '/assets/images/services/DSC01247-scaled-1.jpg',
-      celebrationGalore: '/assets/images/services/DSC01514-scaled-1.jpg',
-      inauguration: '/assets/images/services/DSC01696-scaled-1.jpg',
-      hybridEvents: '/assets/images/services/DSC01901-scaled-1.jpg',
-      specialEvents: '/assets/images/services/DSC01980-scaled-1.jpg',
-      servicesLanding: '/assets/images/services/DSC02447-scaled-1.jpg',
-      conventionMeet: '/assets/images/services/DSC01878-scaled-1.jpg',
-      generalServices: '/assets/images/services/DSC02449-scaled-1.jpg'
+      businessEvents: '/assets/media/Services/Business Events.jpg',
+      celebrationGalore: '/assets/media/Services/Celebration Galore.jpg',
+      inauguration: '/assets/media/Services/Launches - Products, Facility & Operations .jpg',
+      hybridEvents: '/assets/media/Services/Hybrid Events .jpg',
+      specialEvents: '/assets/media/Services/special events.jpg',
+      servicesLanding: '/assets/media/Services/Services- Landing page 1.jpg',
+      conventionMeet: '/assets/media/Services/Industry Convention, Customer & Dealer Meet.jpg',
+      generalServices: '/assets/media/Services/Copy of Home page 2 -Industry Convention, Customer & Dealers Meet.jpg'
     };
 
     return serviceImageMap;
@@ -18,24 +18,24 @@ export class ServicesMediaService {
   static getServicesHeroImages() {
     // Get local services images for hero carousel
     return [
-      { src: '/assets/images/services/DSC01247-scaled-1.jpg', alt: 'Business Events', category: 'Business Events' },
-      { src: '/assets/images/services/DSC01514-scaled-1.jpg', alt: 'Celebrations', category: 'Celebrations' },
-      { src: '/assets/images/services/DSC01696-scaled-1.jpg', alt: 'Inaugurations', category: 'Inaugurations' },
-      { src: '/assets/images/services/DSC01901-scaled-1.jpg', alt: 'Hybrid Events', category: 'Hybrid Events' },
-      { src: '/assets/images/services/DSC01980-scaled-1.jpg', alt: 'Special Events', category: 'Special Events' },
-      { src: '/assets/images/services/DSC01878-scaled-1.jpg', alt: 'Conventions', category: 'Conventions' }
+      { src: '/assets/media/Services/Business Events.jpg', alt: 'Business Events', category: 'Business Events' },
+      { src: '/assets/media/Services/Celebration Galore.jpg', alt: 'Celebrations', category: 'Celebrations' },
+      { src: '/assets/media/Services/Launches - Products, Facility & Operations .jpg', alt: 'Inaugurations', category: 'Inaugurations' },
+      { src: '/assets/media/Services/Hybrid Events .jpg', alt: 'Hybrid Events', category: 'Hybrid Events' },
+      { src: '/assets/media/Services/special events.jpg', alt: 'Special Events', category: 'Special Events' },
+      { src: '/assets/media/Services/Industry Convention, Customer & Dealer Meet.jpg', alt: 'Conventions', category: 'Conventions' }
     ];
   }
 
   static getServicesGallery() {
     // Get local images for gallery display
     return [
-      { url: '/assets/images/services/DSC01247-scaled-1.jpg', title: 'Business Events', category: 'Business Events' },
-      { url: '/assets/images/services/DSC01514-scaled-1.jpg', title: 'Celebrations', category: 'Celebrations' },
-      { url: '/assets/images/services/DSC01696-scaled-1.jpg', title: 'Inaugurations', category: 'Inaugurations' },
-      { url: '/assets/images/services/DSC01901-scaled-1.jpg', title: 'Hybrid Events', category: 'Hybrid Events' },
-      { url: '/assets/images/services/DSC01980-scaled-1.jpg', title: 'Special Events', category: 'Special Events' },
-      { url: '/assets/images/services/DSC01878-scaled-1.jpg', title: 'Conventions', category: 'Conventions' }
+      { url: '/assets/media/Services/Business Events.jpg', title: 'Business Events', category: 'Business Events' },
+      { url: '/assets/media/Services/Celebration Galore.jpg', title: 'Celebrations', category: 'Celebrations' },
+      { url: '/assets/media/Services/Launches - Products, Facility & Operations .jpg', title: 'Inaugurations', category: 'Inaugurations' },
+      { url: '/assets/media/Services/Hybrid Events .jpg', title: 'Hybrid Events', category: 'Hybrid Events' },
+      { url: '/assets/media/Services/special events.jpg', title: 'Special Events', category: 'Special Events' },
+      { url: '/assets/media/Services/Industry Convention, Customer & Dealer Meet.jpg', title: 'Conventions', category: 'Conventions' }
     ];
   }
 

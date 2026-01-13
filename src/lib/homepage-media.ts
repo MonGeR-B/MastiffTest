@@ -3,12 +3,12 @@ import homepageData from '@/../../homepage.json';
 export class HomepageMediaService {
   static getServiceImages() {
     const serviceImageMap: Record<string, string> = {
-      businessEvents: '/assets/images/services/DSC01247-scaled-1.jpg',
-      celebrationGalore: '/assets/images/services/DSC01514-scaled-1.jpg',
-      inauguration: '/assets/images/services/DSC01696-scaled-1.jpg',
-      dealersMeet: '/assets/images/services/DSC01878-scaled-1.jpg',
-      hybridEvents: '/assets/images/services/DSC01901-scaled-1.jpg',
-      specialProjects: '/assets/images/services/DSC01980-scaled-1.jpg'
+      businessEvents: '/assets/media/Services/Business Events.jpg',
+      celebrationGalore: '/assets/media/Services/Celebration Galore.jpg',
+      inauguration: '/assets/media/Services/Launches - Products, Facility & Operations .jpg',
+      dealersMeet: '/assets/media/Services/Industry Convention, Customer & Dealer Meet.jpg',
+      hybridEvents: '/assets/media/Services/Hybrid Events .jpg',
+      specialProjects: '/assets/media/Services/special events.jpg'
     };
 
     return serviceImageMap;
