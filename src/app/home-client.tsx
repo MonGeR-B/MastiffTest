@@ -162,8 +162,8 @@ export default function HomeClient() {
         <div className="absolute inset-0 z-0 bg-[#2A3959]">
           <ProgressiveVideo
             src={heroVideo}
-            poster="/assets/images/services/DSC02447-scaled-1.jpg"
-            fallbackImage="/assets/images/services/DSC02447-scaled-1.jpg"
+            poster={serviceImages.servicesLanding}
+            fallbackImage={serviceImages.servicesLanding}
             captionSrc="/assets/captions/hero-video.vtt"
             captionLabel="English"
             className="absolute inset-0 w-full h-full"

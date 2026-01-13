@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { generatePageMetadata } from "@/lib/seo-utils";
 import ServicesClient from "./services-client";
+import { ServicesMediaService } from "@/lib/services-media";
 
 export const metadata: Metadata = generatePageMetadata({
   title: "White Massif Services | Successful Corporate Events",
@@ -21,7 +22,7 @@ export const metadata: Metadata = generatePageMetadata({
   ],
   openGraph: {
     type: "website",
-    images: ["/assets/images/services/DSC02447-scaled-1.jpg"]
+    images: [ServicesMediaService.getServicesImages().servicesLanding]
   },
   path: "/services"
 });

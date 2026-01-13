@@ -8,6 +8,7 @@ import { PopupProvider } from "@/components/popup-provider";
 import FloatingCTA from "@/components/floating-cta";
 import SchemaMarkup from "@/components/schema-markup";
 import { generateOrganizationSchema, generateLocalBusinessSchema, generateWebSiteSchema, companyInfo, generatePageMetadata } from "@/lib/seo-utils";
+import { ServicesMediaService } from "@/lib/services-media";
 import Script from "next/script";
 import "./globals.css";
 
@@ -128,11 +129,10 @@ export default function RootLayout({
         </Script>
 
 
-        {/* Preload critical resources for better LCP */}
         <link
           rel="preload"
           as="image"
-          href="/assets/images/services/DSC02447-scaled-1.jpg"
+          href={ServicesMediaService.getServicesImages().servicesLanding}
           fetchPriority="high"
         />
 

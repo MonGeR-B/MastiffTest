@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { usePopup } from "@/components/popup-provider";
+import { ServicesMediaService } from "@/lib/services-media";
 
 import {
   ArrowRight,
@@ -57,6 +58,8 @@ export default function ServicesClient() {
   const heroRef = useRef(null);
   const { openPopup } = usePopup();
 
+  // Get service images from media service
+  const serviceImages = ServicesMediaService.getServicesImages();
 
   // Detailed Service Showcases
   const serviceShowcases = [
@@ -65,10 +68,10 @@ export default function ServicesClient() {
       title: "Business Critical Events - Conferences | All Hands | Kick Offs | Summits",
       description: "We specialize in crafting extraordinary business conferences that inspire, educate, and propel organizations to new heights. At White Massif, we understand that the success of your business conference is crucial to achieving your organizational objectives. With a commitment to excellence, innovation, and a client-centric approach, we go above and beyond to deliver conferences that leave a lasting impression. From thought-provoking content to unparalleled networking opportunities, our conferences are designed to inspire, educate, and empower.",
       buttonText: "Plan your event",
-      mainImage: "/assets/images/services/DSC01247-scaled-1.jpg",
+      mainImage: serviceImages.businessEvents,
       imageCaption: "Fortune 500 annual summit - 1000+ global leaders",
       gallery: [
-        "/assets/images/services/DSC01247-scaled-1.jpg"
+        serviceImages.businessEvents
       ],
       extendedDescription: "Specializing in conference management, we collaborate with the best partners in the industry to orchestrate a diverse range of conferences and meetings tailored to various needs. Whether it's business conferences, global summits, symposiums, trade conferences & exhibitions, corporate annual kick offs or all hands sessions with the Leadership team from both India and abroad, we cover it all.\n\nOur team understands your needs, objectives, and brand goals, translating them into meticulously planned, creative, innovative, and impactful event experiences both domestically and internationally. Our comprehensive solutions encompasses budgeting, location planning, logistics, itinerary coordination, delegate management, local experiences, curated entertainment and the integration of cutting-edge technology & suitable infrastructure for business meetings. Our team of seasoned experts thoroughly comprehends your unique requirements and crafts a meticulously tailored plan to meet your specific needs.",
       features: [
@@ -101,10 +104,10 @@ export default function ServicesClient() {
       description: "Celebrate your success with style and distinction. At White Massif, we understand that corporate celebrations go beyond just marking a date on the calendar. We believe that moments of success, milestones, and achievements deserve to be celebrated in grandeur. These events are opportunities to strengthen team bonds, enhance corporate culture, and showcase your organization's achievements.",
       buttonText: "Turn your idea into reality",
       extendedDescription: "With our dedicated team and meticulous planning, we ensure that every celebration becomes a memorable and impactful event. Let us be your dedicated partner in creating unforgettable moments that resonate with your team and stakeholders.",
-      mainImage: "/assets/images/services/DSC01514-scaled-1.jpg",
+      mainImage: serviceImages.celebrationGalore,
       imageCaption: "10,000-guest cultural celebration - Pure magic captured",
       gallery: [
-        "/assets/images/services/DSC01514-scaled-1.jpg"
+        serviceImages.celebrationGalore
       ],
       features: [
         {
@@ -136,10 +139,10 @@ export default function ServicesClient() {
       description: "Launching a new product, service, or brand is a momentous occasion that demands a grand and impactful celebration. Through years of experience launching diverse products, facilities, vehicles and brands, we have gained valuable insights into what leaves a lasting impression on the audience at the same time adapting to new innovations and trends to achieve the same.",
       buttonText: "Find the perfect venue",
       extendedDescription: "At White Massif, we understand that a successful launch is more than just an event – it's the beginning of a journey towards success. With our dedicated team, attention to detail, and commitment to excellence, we ensure that your launch event becomes a powerful catalyst for your brand's future achievements. From strategic planning to flawless execution, we are your partner in turning your vision into a spectacular reality.",
-      mainImage: "/assets/images/services/DSC01696-scaled-1.jpg",
+      mainImage: serviceImages.inauguration,
       imageCaption: "Global product launch - 50M+ impressions generated",
       gallery: [
-        "/assets/images/services/DSC01696-scaled-1.jpg"
+        serviceImages.inauguration
       ],
       features: [
         {
@@ -171,10 +174,10 @@ export default function ServicesClient() {
       description: "Tailor made services to seamlessly execute hybrid events, combining the best of in-person and virtual components for a dynamic and engaging experience.",
       buttonText: "Let's customise a theme for your event",
       extendedDescription: "In these unparalleled times, we have fortified ourselves with advanced technical expertise and a refined skill set to proficiently orchestrate exceptional solutions to engage your colleagues, connect with stakeholders, host rewards and recognition events, unveil new products and services, and conduct fireside chats and leadership addresses—all executed either virtually or through a hybrid model. We achieve this through cutting-edge technology, innovative approaches, and the seamless integration of multiple applications streamed via virtual platforms. Our successful track record includes managing a spectrum of virtual events, from conferences, panel discussions, fireside chats, town halls, employee engagement and annual day celebrations.",
-      mainImage: "/assets/images/services/DSC01901-scaled-1.jpg",
+      mainImage: serviceImages.hybridEvents,
       imageCaption: "Hybrid event with global reach",
       gallery: [
-        "/assets/images/services/DSC01901-scaled-1.jpg"
+        serviceImages.hybridEvents
       ],
       features: [
         {
@@ -206,10 +209,10 @@ export default function ServicesClient() {
       description: "In an ever-evolving business landscape staying at the forefront of innovation, collaboration, and knowledge exchange is paramount. Establishing regular meet-and-greet sessions with industry experts, customers, dealers is essential for a business.",
       buttonText: "Book corporate entertainment",
       extendedDescription: "This practice not only cultivates robust and enduring professional and personal relationships but also fosters loyalty, provides insights into the industry, customer perspectives, gathers feedback on market conditions, and disseminates crucial information about new products, services, or offers. Hosting these events creates an environment where thought leaders, professionals, stakeholders and enthusiasts converge for an immersive experience like no other.",
-      mainImage: "/assets/images/services/DSC01878-scaled-1.jpg",
+      mainImage: serviceImages.conventionMeet,
       imageCaption: "Industry convention bringing leaders together",
       gallery: [
-        "/assets/images/services/DSC01878-scaled-1.jpg"
+        serviceImages.conventionMeet
       ],
       features: [
         {
@@ -241,10 +244,10 @@ export default function ServicesClient() {
       description: "In a world where one-size-fits-all doesn't suffice, We design tailor-made experiences, where every detail is meticulously crafted to align with the unique vision, preferences, and objectives of our clients.",
       buttonText: "Streamline event logistics",
       extendedDescription: "From large scale public events, fundraising events, art & music festivals, cross - city biking events, setting up unique experiences we have delivered it all. These endeavors showcase our commitment to tailoring projects to fulfill the objectives",
-      mainImage: "/assets/images/services/DSC01980-scaled-1.jpg",
+      mainImage: serviceImages.specialEvents,
       imageCaption: "Unique special project execution",
       gallery: [
-        "/assets/images/services/DSC01980-scaled-1.jpg"
+        serviceImages.specialEvents
       ],
       features: [
         {
@@ -323,7 +326,7 @@ export default function ServicesClient() {
         {/* Background Image - Mobile Optimized */}
         <div className="absolute inset-0">
           <Image
-            src="/assets/images/services/DSC02447-scaled-1.jpg"
+            src={serviceImages.servicesLanding}
             alt="White Massif Services - Event Management"
             fill
             className="object-cover"
