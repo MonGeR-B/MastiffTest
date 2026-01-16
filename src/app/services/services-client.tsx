@@ -464,15 +464,14 @@ export default function ServicesClient() {
       {serviceShowcases.map((service, index) => (
         <section key={service.id} id={service.id} className="mobile-section-padding">
           <div className="max-w-7xl mx-auto mobile-container">
-            <div className={`flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 lg:items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-              }`}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:items-center">
               {/* Content Side - Mobile First */}
               <motion.div
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true }}
                 variants={fadeInUp}
-                className={`order-2 lg:order-none ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}
+                className={index % 2 === 1 ? 'lg:col-start-2' : 'lg:col-start-1'}
               >
 
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display mb-4 sm:mb-6 text-[#2A3959] leading-tight mobile-heading">
@@ -503,7 +502,7 @@ export default function ServicesClient() {
                 whileInView="animate"
                 viewport={{ once: true }}
                 variants={fadeInUp}
-                className={`order-1 lg:order-none ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
+                className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : 'lg:col-start-2'}
               >
                 {/* Main Service Image - Mobile Responsive */}
                 <div className="relative rounded-xl lg:rounded-2xl overflow-hidden shadow-xl lg:shadow-2xl mb-4 sm:mb-6">

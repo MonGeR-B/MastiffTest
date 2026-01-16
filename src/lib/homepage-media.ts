@@ -5,8 +5,8 @@ export class HomepageMediaService {
     const serviceImageMap: Record<string, string> = {
       businessEvents: '/assets/media/Services/Business Events.jpg',
       celebrationGalore: '/assets/media/Services/Celebration Galore.jpg',
-      inauguration: '/assets/media/Services/Launches - Products, Facility & Operations .jpg',
-      dealersMeet: '/assets/media/Services/Industry Convention, Customer & Dealer Meet.jpg',
+      inauguration: '/assets/media/Services/LaunchesProductsFacility&Operations.jpg',
+      dealersMeet: '/assets/media/Services/IndustryConventionCustomer&DealerMeet.jpg',
       hybridEvents: '/assets/media/Services/Hybrid Events .jpg',
       specialProjects: '/assets/media/Services/special events.jpg'
     };
@@ -19,14 +19,14 @@ export class HomepageMediaService {
   }
 
   static getPortfolioImages() {
-    // Use portfolio images - actual event photos from portfolio folder
+    // Use Home Page images for "Where Vision Meets Precision" section
     const portfolioImages = [
-      '/assets/images/portfolio/92A2004-scaled-1.jpg',
-      '/assets/images/portfolio/DSC02450-scaled-1.jpg',
-      '/assets/images/portfolio/PSGF6309-1-scaled-1-1024x1024.jpg',
-      '/assets/images/portfolio/Untitled-design-19-1.png',
-      '/assets/images/portfolio/Untitled-design-23-1.png',
-      '/assets/images/services/DSC01247-scaled-1.jpg'
+      '/assets/media/Home Page/home page 3.jpg',
+      '/assets/media/Home Page/Home page 3 Cultural Celebration.jpg',
+      '/assets/media/Home Page/Home page 3 hybrid events_.jpg',
+      '/assets/media/Home Page/home page 3 Team Building.jpg',
+      '/assets/media/Home Page/home page 3  Annual Year Celebration.jpg',
+      '/assets/media/Home Page/Home page 3 - Award Ceremony.jpg'
     ];
 
     return portfolioImages;
