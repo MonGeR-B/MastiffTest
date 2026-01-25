@@ -30,8 +30,10 @@ import {
     CheckCircle,
     ShieldCheck,
     Zap,
-    Cast,
-    Cpu
+    Handshake,
+    Heart,
+    Share2,
+    UserCheck
 } from "lucide-react";
 
 // Animation variants
@@ -49,7 +51,7 @@ const staggerContainer = {
     }
 };
 
-export default function HybridAndVirtualEventsClient() {
+export default function DealerAndCustomerMeetEventsClient() {
     const { openPopup } = usePopup();
     const serviceImages = ServicesMediaService.getServicesImages();
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -61,8 +63,8 @@ export default function HybridAndVirtualEventsClient() {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 bg-[#2A3959]">
                     <Image
-                        src={serviceImages.hybridEvents}
-                        alt="Hybrid & Virtual Events"
+                        src={serviceImages.conventionMeet}
+                        alt="Dealer & Customer Meet Events"
                         fill
                         className="object-cover blur-[2px] scale-105"
                         priority
@@ -84,11 +86,11 @@ export default function HybridAndVirtualEventsClient() {
 
                         {/* Main H1 Heading */}
                         <h1 className="text-4xl mb-12 sm:text-5xl md:text-6xl lg:text-7xl font-display text-white leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
-                            Hybrid & Virtual Events in Bangalore
+                            Dealer & Customer Meet Events in Bangalore
                         </h1>
 
                         <p className="text-lg sm:text-xl lg:text-2xl text-white max-w-4xl mx-auto leading-relaxed mb-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-medium">
-                            Seamless Digital & Hybrid Event Experiences Designed for Engagement, Reach & Reliability
+                            Strategic Dealer & Customer Engagement Experiences That Strengthen Relationships and Drive Growth
                         </p>
 
                         {/* CTA Buttons */}
@@ -163,54 +165,54 @@ export default function HybridAndVirtualEventsClient() {
 
                                 <div className="space-y-8">
                                     <p className="text-lg sm:text-xl text-gray-200 leading-relaxed font-light">
-                                        At <strong className="text-white font-semibold">White Massif</strong>, we deliver <span className="text-[#F9A625] font-bold">end-to-end hybrid and virtual event management in Bangalore</span>, combining robust technology, thoughtful experience design, and flawless execution. From high-impact webinars and virtual conferences to live-streamed events and interactive online workshops, we help organizations connect with audiences, anywhere, anytime, without compromise.
+                                        At <strong className="text-white font-semibold">White Massif</strong>, we specialize in delivering <span className="text-[#F9A625] font-bold">dealer and customer meet events in Bangalore</span> that combine relationship-building with strategic communication. From high-energy dealer meets to focused product demonstrations and customer appreciation events, we design experiences that strengthen loyalty, improve alignment, and support long-term business growth.
                                     </p>
 
                                     <div className="w-full h-px bg-white/10"></div>
 
                                     <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                                        In today’s distributed and digital-first business environment, virtual and hybrid events have become essential for communication, engagement, and growth.
+                                        Dealer and customer meet events play a crucial role in building trust, reinforcing partnerships, and aligning business objectives across the value chain.
                                     </p>
                                 </div>
                             </div>
                         </motion.div>
                     </motion.div>
                 </div>
-            </section >
+            </section>
 
             {/* Key Services Section */}
-            < section className="py-24 bg-white" >
+            <section className="py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-20">
                         <Badge className="mb-6 bg-[#F9A625]/10 text-[#D98A10] border-[#F9A625]/20 px-4 py-2 hover:bg-[#F9A625]/20 transition-colors">
                             Our Expertise
                         </Badge>
                         <h2 className="text-4xl sm:text-6xl font-display text-[#2A3959] mb-6 max-w-6xl mx-auto">
-                            Our Hybrid & Virtual Event Services in Bangalore
+                            Our Dealer & Customer Meet Event Services in Bangalore
                         </h2>
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-8">
                         {[
                             {
+                                icon: Handshake,
+                                title: "Dealer Meets",
+                                description: <>We design and manage dealer meets that bring channel partners together to align on vision, performance goals, and market strategies. These events are structured to encourage dialogue, knowledge sharing, and motivation while reinforcing brand trust and partnership value. Whether regional or national in scope, our dealer meets are professionally executed and purpose-driven.</>
+                            },
+                            {
+                                icon: Heart,
+                                title: "Customer Appreciation Events",
+                                description: <>Customer appreciation events are curated to celebrate loyalty, recognize long-term relationships, and deepen brand affinity. We create warm, engaging experiences that allow organizations to connect meaningfully with customers in a relaxed yet professional setting. Every element is designed to leave a lasting positive impression and strengthen emotional connections with your brand.</>
+                            },
+                            {
+                                icon: Share2,
+                                title: "Channel Partner Conferences",
+                                description: <>Channel partner conferences require a balance of strategic communication and collaborative engagement. We manage conferences that help organizations communicate business updates, share market insights, and align partners with future plans. These events are designed to foster transparency, collaboration, and confidence across distribution and partner networks.</>
+                            },
+                            {
                                 icon: Presentation,
-                                title: "Webinars",
-                                description: <>We plan and manage professional webinars that are structured, engaging, and purpose-driven. Our webinar solutions are designed to support knowledge sharing, lead generation, internal communication, and thought leadership. From speaker coordination and content flow to audience interaction and platform management, we ensure webinars are smooth, engaging, and outcome-focused.</>
-                            },
-                            {
-                                icon: Globe,
-                                title: "Virtual Conferences",
-                                description: <>Virtual conferences require careful orchestration to maintain attention and deliver value across multiple sessions and audiences. We design and execute virtual conferences that mirror the impact of physical events through strong content structuring, seamless transitions, speaker support, and immersive digital environments. These conferences are ideal for industry forums, leadership summits, and large-scale knowledge-sharing events.</>
-                            },
-                            {
-                                icon: Cast,
-                                title: "Live Streaming Services",
-                                description: <>Our live streaming services enable organizations to broadcast events in real time with clarity, stability, and professional production quality. Whether streaming corporate announcements, leadership addresses, product launches, or hybrid events, we manage the complete live streaming setup, ensuring consistent audio-visual quality and uninterrupted transmission across platforms.</>
-                            },
-                            {
-                                icon: Users,
-                                title: "Interactive Online Workshops",
-                                description: <>Interactive online workshops are designed to promote collaboration, learning, and engagement in a virtual setting. We curate workshops that go beyond presentations by incorporating breakout sessions, real-time activities, facilitated discussions, and interactive tools. These workshops are ideal for training programs, leadership development, team engagement, and skill-building initiatives.</>
+                                title: "Product Demonstrations",
+                                description: <>Product demonstration events are focused on clarity, confidence, and hands-on engagement. We plan demonstrations that allow dealers and customers to experience product features, benefits, and use cases in a structured environment. These events help drive product understanding, accelerate adoption, and support sales effectiveness.</>
                             }
                         ].map((service, index) => (
                             <motion.div
@@ -236,16 +238,16 @@ export default function HybridAndVirtualEventsClient() {
                         ))}
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* Why Choose Us Section */}
-            < section className="relative py-24 lg:py-32 bg-[#2A3959] overflow-hidden" >
+            <section className="relative py-24 lg:py-32 bg-[#2A3959] overflow-hidden">
                 {/* Background Pattern */}
-                < div className="absolute inset-0 opacity-10" >
+                <div className="absolute inset-0 opacity-10">
                     <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                         <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
                     </svg>
-                </div >
+                </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Heading Section - Full Width */}
@@ -261,8 +263,11 @@ export default function HybridAndVirtualEventsClient() {
                             </Badge>
                             <h2 className="flex flex-col text-4xl sm:text-5xl lg:text-6xl font-display text-white leading-tight max-w-4xl">
                                 <span className="flex">Why Choose White Massif for</span>
-                                <span className="text-[#F9A625] flex">Hybrid & Virtual Events?</span>
+                                <span className="text-[#F9A625] flex">Dealer & Customer Meet Events?</span>
                             </h2>
+                            <p className="text-lg sm:text-xl text-gray-200 leading-relaxed font-light">
+                                At <strong className="text-white font-semibold">White Massif</strong>, dealer and customer meet events are approached as <span className="text-[#F9A625] font-bold">strategic relationship platforms</span>, not just formal gatherings. Our strength lies in combining business understanding with experience-led execution to create events that deliver long-term value.
+                            </p>
                         </motion.div>
                     </div>
 
@@ -278,29 +283,34 @@ export default function HybridAndVirtualEventsClient() {
                             <div className="space-y-8 max-w-2xl">
                                 {[
                                     {
-                                        icon: Palette,
-                                        title: "Experience-Driven Digital Design",
-                                        desc: "We design digital experiences that prioritize audience attention, interaction, and clarity, ensuring virtual events feel purposeful, not passive."
-                                    },
-                                    {
-                                        icon: Cpu,
-                                        title: "Strong Technology & Execution Control",
-                                        desc: "Our team manages platforms, tools, and technical workflows with precision, minimizing risks and ensuring smooth execution throughout the event lifecycle."
-                                    },
-                                    {
-                                        icon: Layers,
-                                        title: "Flexible Event Formats",
-                                        desc: "We support fully virtual, hybrid, and multi-location event formats, adapting seamlessly to your audience size, geography, and engagement goals."
+                                        icon: TrendingUp,
+                                        title: "Deep Understanding of Channel & Customer Dynamics",
+                                        desc: "We understand how dealer networks, channel partners, and customers influence sales performance, brand perception, and market expansion. Every event is designed to strengthen trust, alignment, and collaborationSationships across the value chain."
                                     },
                                     {
                                         icon: Briefcase,
-                                        title: "Enterprise-Ready Processes",
-                                        desc: "From speaker rehearsals to data privacy and contingency planning, our processes are built to meet enterprise-level expectations and governance standards."
+                                        title: "Business-First Event Strategy",
+                                        desc: "Our events are built around clear business objectives, whether it’s improving dealer motivation, driving product adoption, increasing partner confidence, or reinforcing customer loyalty, ensuring every interaction serves a purpose."
                                     },
                                     {
-                                        icon: CheckCircle,
-                                        title: "End-to-End Ownership",
-                                        desc: "A single dedicated team manages planning, technology, execution, and post-event closure, ensuring accountability and consistency."
+                                        icon: Megaphone,
+                                        title: "Balanced Communication & Engagement",
+                                        desc: "We strike the right balance between information sharing and engagement, ensuring presentations, product demos, and interactions are structured, relevant, and impactful without overwhelming attendees."
+                                    },
+                                    {
+                                        icon: UserCheck,
+                                        title: "Professional Stakeholder & Guest Management",
+                                        desc: "From senior leadership and key dealers to valued customers and partners, we ensure smooth guest handling, clear communication, and a premium experience throughout the event lifecycle."
+                                    },
+                                    {
+                                        icon: ShieldCheck,
+                                        title: "End-to-End Ownership & Accountability",
+                                        desc: " A single dedicated team manages planning, coordination, execution, and closure, ensuring consistency, accountability, and seamless execution across all touchpoints."
+                                    },
+                                    {
+                                        icon: MapPin,
+                                        title: "Local Execution Expertise in Bangalore",
+                                        desc: "With strong on-ground knowledge of venues, logistics, and vendor ecosystems in Bangalore, we deliver dealer and customer meets with reliability, speed, and execution precision."
                                     }
                                 ].map((feature, idx) => (
                                     <div key={idx} className="flex gap-6">
@@ -361,10 +371,10 @@ export default function HybridAndVirtualEventsClient() {
                         </motion.div>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* Corporate Event Management Process Section */}
-            < section className="py-24 bg-gray-50" >
+            <section className="py-24 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Section Header */}
                     <div className="text-center mb-20">
@@ -372,10 +382,10 @@ export default function HybridAndVirtualEventsClient() {
                             Our Methodology
                         </Badge>
                         <h2 className="text-4xl sm:text-6xl font-display text-[#2A3959] mb-8">
-                            Our Hybrid & Virtual Event Management Process
+                            Our Dealer & Customer Meet Event Management Process
                         </h2>
                         <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                            At <strong className="text-[#2A3959] font-bold">White Massif</strong>, our hybrid and virtual event process is built to ensure <span className="font-semibold text-[#F9A625]">technical reliability, audience engagement, and brand consistency</span>, without the risks commonly associated with digital events.
+                            At <strong className="text-[#2A3959] font-bold">White Massif</strong>, our process ensures that every dealer or customer interaction is <span className="font-semibold text-[#F9A625]">intentional, well-structured, and impactful.</span>
                         </p>
                     </div>
 
@@ -383,40 +393,34 @@ export default function HybridAndVirtualEventsClient() {
                     <div className="flex flex-wrap justify-center gap-8">
                         {[
                             {
-                                title: "Event Objectives, Audience & Format Mapping",
-                                desc: "We begin by defining the strategic foundation of the event to ensure the right format and tools are chosen.",
+                                title: "Business Objective & Stakeholder Alignment",
+                                desc: "We begin by understanding the purpose of the meet and the stakeholders involved.",
                                 points: [
-                                    "Core event objective (engagement, training, communication, branding, lead generation)",
-                                    "Audience type, size, and geographic spread",
-                                    "Event format selection (virtual, hybrid, live-streamed)",
-                                    "Duration, agenda depth, and interaction intensity",
-                                    "Success metrics and reporting expectations"
-                                ],
-                                footer: <>This clarity helps avoid over-engineering and ensures a <span className="font-semibold text-[#F9A625]">purpose-driven digital experience.</span></>
+                                    "Business and sales objectives",
+                                    "Dealer, customer, or partner profiles",
+                                    "Key messages and outcomes",
+                                    "Scale, format, and timeline expectations"
+                                ]
                             },
                             {
-                                title: "Digital Experience & Content Flow Design",
-                                desc: "Once objectives are clear, we design the virtual or hybrid experience to keep audiences attentive and involved.",
-                                points: ["Session structure and agenda sequencing", "Speaker order and time allocation", "Engagement touchpoints such as polls, Q&A, chats, and breakout rooms", "Audience journey mapping from login to closure", "Brand integration across digital touchpoints"],
-                                footer: <>The focus is on<span className="font-semibold text-[#F9A625]"> maintaining attention and reducing virtual fatigue.</span></>
+                                title: "Experience Design & Content Structuring",
+                                desc: "Once objectives are defined, we design an experience that supports communication and engagement.",
+                                points: ["Event flow and session sequencing", "Content structure for presentations and demos", "Engagement moments and interaction design", "Brand and messaging alignment"]
                             },
                             {
-                                title: "Platform Selection, Tech Setup & Rehearsals",
-                                desc: "Technology reliability is critical to virtual and hybrid events.",
-                                points: ["Platform selection based on scale, security, and interactivity needs", "Integration of streaming, engagement, and registration tools", "Speaker onboarding and technical checks", "Full run-throughs and rehearsals", "Backup planning and contingency workflows"],
-                                footer: <>Every technical element is stress-tested to ensure <span className="font-semibold text-[#F9A625]">zero disruption during live execution.</span></>
+                                title: "Planning, Venue & Logistics Management",
+                                desc: "We manage all operational and logistical elements to ensure smooth execution.",
+                                points: ["Venue selection and setup in Bangalore", "Audio-visual and technical arrangements", "Branding, signage, and spatial planning", "Vendor coordination and quality contro"]
                             },
                             {
-                                title: "Live Event Execution & Real-Time Control",
-                                desc: "On event day, our team manages both the human and technical aspects of execution.",
-                                points: ["Live coordination and run-of-show control", "Speaker cueing and session transitions", "Audience engagement moderation", "Real-time technical monitoring", "Immediate troubleshooting and adjustments"],
-                                footer: <>This ensures a smooth, professional experience for both virtual and on-ground participants.</>
+                                title: "On-Ground Execution & Guest Management",
+                                desc: "On event day, our team ensures professional and seamless execution.",
+                                points: ["End-to-end on-site coordination", "Speaker and leadership support", "Guest, dealer, and customer handling", "Timeline control and issue resolution"]
                             },
                             {
-                                title: "Post-Event Closure, Analytics & Insights",
-                                desc: "After the event, we help close the loop with structured reporting and asset handover.",
-                                points: ["Session recordings and content delivery", "Attendance and engagement analytics", "Feedback summaries and qualitative insights", "Performance review against objectives", "Recommendations for future virtual or hybrid events"],
-                                footer: <>This enables organizations to <span className="font-semibold text-[#F9A625]">measure ROI and continuously improve digital engagement.</span></>
+                                title: "Post-Event Closure & Relationship Insights",
+                                desc: "Our support continues after the event to help organizations maximize value.",
+                                points: ["Event closure and vendor settlements", "Feedback collection and analysis", "Engagement observations and insights", "Recommendations for future dealer or customer events"]
                             }
                         ].map((step, index) => (
                             <motion.div
@@ -452,26 +456,20 @@ export default function HybridAndVirtualEventsClient() {
                                         ))}
                                     </div>
 
-                                    {/* Footer */}
-                                    <div className="pt-4 border-t border-gray-100 mt-auto">
-                                        <p className="text-sm text-[#2A3959] italic bg-blue-50/50 p-3 rounded-lg border border-blue-100/50">
-                                            {step.footer}
-                                        </p>
-                                    </div>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
-            </section >
+            </section>
             {/* Industries We Serve Section */}
-            < section className="py-24 bg-[#2A3959] relative overflow-hidden" >
+            <section className="py-24 bg-[#2A3959] relative overflow-hidden">
                 {/* Background Pattern */}
-                < div className="absolute inset-0 opacity-5" >
+                <div className="absolute inset-0 opacity-5">
                     <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                         <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
                     </svg>
-                </div >
+                </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-16">
@@ -482,41 +480,41 @@ export default function HybridAndVirtualEventsClient() {
                             Industries We Serve
                         </h2>
                         <p className="text-lg text-white max-w-4xl mx-auto leading-relaxed">
-                            Our hybrid and virtual event solutions are tailored to industry-specific communication needs, compliance requirements, and audience expectations.
+                            Our dealer and customer meet expertise spans multiple industries, allowing us to design events that are <span className="font-semibold text-[#F9A625]">relevant, credible, and aligned with sector-specific needs.</span>
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             {
-                                title: "Technology & IT Companies",
-                                desc: "We help tech organizations manage:",
+                                title: "Manufacturing & Industrial Organizations",
+                                desc: "We support manufacturing and industrial brands with dealer meets and partner conferences that focus on:",
                                 points: [
-                                    "Large-scale webinars and virtual conferences",
-                                    "Product demos and internal town halls",
-                                    "Distributed team engagement and training",
-                                    "Global leadership communications"
+                                    "Distributor and dealer alignment",
+                                    "Product capability and technical understanding",
+                                    "Market expansion strategies",
+                                    "Long-term channel relationship building"
                                 ]
                             },
                             {
-                                title: "Startups & Growth-Stage Companies",
-                                desc: "For fast-scaling teams, we support:",
-                                points: ["Investor updates and virtual pitches", "Internal alignment meetings", "Brand-building webinars", "Cost-effective, scalable digital events"],
+                                title: "FMCG & Consumer Goods",
+                                desc: "For FMCG and consumer brands, our events are structured to:",
+                                points: ["Strengthen dealer and retailer engagement", "Improve product visibility and recall", "Drive consistency in brand communication", "Encourage market-level collaboration"],
+                            },
+                            {
+                                title: "Automotive & Mobility",
+                                desc: "In the automotive and mobility sector, we manage dealer and customer events that emphasize:",
+                                points: ["Product performance and innovation showcases", "Dealer motivation and recognition", "Customer engagement and loyalty building", "Service and after-sales communication"],
+                            },
+                            {
+                                title: "Technology & Electronics",
+                                desc: "We work with technology and electronics brands to deliver partner and customer meets that enable:",
+                                points: ["Clear product demonstrations and walkthroughs", "Simplification of complex offerings", "Sales enablement and partner education", "Stronger channel confidence and alignment"],
                             },
                             {
                                 title: "BFSI & Financial Services",
-                                desc: "In regulated environments, precision matters. Our virtual event solutions support:",
-                                points: ["Leadership announcements", "Investor and stakeholder communication", "Secure, compliance-friendly events", "Clear and structured information delivery"],
-                            },
-                            {
-                                title: "Healthcare, Pharma & Life Sciences",
-                                desc: "We design professional virtual formats for:",
-                                points: ["Medical and knowledge conferences", "Training and certification programs", "Stakeholder workshops", "Industry forums with high credibility"],
-                            },
-                            {
-                                title: "Large Enterprises & Multinational Corporations",
-                                desc: "For complex, multi-location organizations, we deliver:",
-                                points: ["Hybrid town halls and global meets", "Multi-session virtual conferences", "Leadership-driven communication events", "Scalable digital engagement programs"],
+                                desc: "For BFSI organizations, we design structured dealer and customer engagement events that focus on:",
+                                points: ["Trust and relationship building", "Compliance-aligned communication", "Product and service clarity", "Stakeholder confidence and transparency"],
                             }
                         ].map((industry, index) => (
                             <motion.div
@@ -545,19 +543,19 @@ export default function HybridAndVirtualEventsClient() {
                         ))}
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* CTA Section */}
-            < section className="py-20 bg-[#2A3959] relative overflow-hidden" >
+            <section className="py-20 bg-[#2A3959] relative overflow-hidden">
                 {/* Background Glow */}
-                < div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F9A625]/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2" ></div >
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F9A625]/10 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
 
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <h2 className="text-3xl sm:text-5xl font-display text-white mb-8">
-                        Planning a Hybrid or Virtual Event in Bangalore?
+                        Planning a Dealer or Customer Meet in Bangalore?
                     </h2>
                     <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                        Partner with White Massif to deliver digital and hybrid experiences that are reliable, engaging, and professionally executed.
+                        Partner with White Massif to create engagement experiences that build relationships, strengthen channels, and support business growth.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <Button
@@ -565,21 +563,21 @@ export default function HybridAndVirtualEventsClient() {
                             onClick={() => window.location.href = 'https://whitemassif.com/contact'}
                             className="bg-transparent border-white text-white hover:!bg-white hover:!text-[#2A3959] transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg px-8 py-6 text-sm lg:text-lg rounded-2xl"
                         >
-                            Request a Custom Virtual Event Plan
+                            Speak to Our Event Specialists
                         </Button>
                         <Button
                             onClick={() => openPopup('corporate-event-management-cta')}
                             className="btn-primary px-8 py-6 text-sm lg:text-lg rounded-2xl bg-[#F9A625] text-white hover:bg-[#e0921a] border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                         >
-                            Speak to Our Hybrid Event Specialists
+                            Get a Custom Dealer Meet Proposal
                             <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* FAQ Section */}
-            < section className="py-24 bg-white relative" >
+            <section className="py-24 bg-white relative">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl sm:text-5xl font-display text-[#2A3959] mb-4">
@@ -590,24 +588,24 @@ export default function HybridAndVirtualEventsClient() {
                     <div className="space-y-4">
                         {[
                             {
-                                q: "What types of virtual and hybrid events do you manage?",
-                                a: "We manage webinars, virtual conferences, live-streamed corporate events, and interactive online workshops across industries."
+                                q: "What types of dealer and customer events do you manage?",
+                                a: "We manage dealer meets, customer appreciation events, channel partner conferences, and structured product demonstration events."
                             },
                             {
-                                q: "Do you provide end-to-end virtual event management?",
-                                a: "Yes. We handle planning, platform management, technical execution, live coordination, and post-event closure."
+                                q: "Can these events be customized for different audiences?",
+                                a: "Yes. Every event is tailored based on audience profile, business objectives, and brand positioning."
                             },
                             {
-                                q: "Can hybrid events support both physical and online audiences?",
-                                a: "Absolutely. We design hybrid events that deliver a seamless experience for both in-person and virtual participants."
+                                q: "Do you handle end-to-end execution?",
+                                a: "Absolutely. From planning and logistics to live execution and post-event closure, we manage the complete lifecycle."
                             },
                             {
-                                q: "How early should virtual events be planned?",
-                                a: "Smaller virtual events can be planned within a few weeks, while larger conferences and hybrid events ideally require 4–6 weeks of preparation."
+                                q: "How early should dealer or customer meets be planned?",
+                                a: "Ideally 4–6 weeks in advance for larger events, though smaller meets can be organized on shorter timelines."
                             },
                             {
-                                q: "Do you provide post-event analytics and recordings?",
-                                a: "Yes. We provide recordings, participation data, and engagement insights to help measure event performance."
+                                q: "Do you provide post-event insights?",
+                                a: "Yes. We share feedback and engagement insights to help refine future dealer and customer engagement strategies."
                             }
                         ].map((faq, index) => (
                             <motion.div
@@ -641,7 +639,7 @@ export default function HybridAndVirtualEventsClient() {
                         ))}
                     </div>
                 </div>
-            </section >
-        </div >
+            </section>
+        </div>
     );
 }
