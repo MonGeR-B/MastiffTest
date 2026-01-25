@@ -22,7 +22,14 @@ import {
     Layers,
     MapPin,
     BarChart,
-    ChevronDown
+    ChevronDown,
+    Trophy,
+    Palette,
+    Lightbulb,
+    Puzzle,
+    CheckCircle,
+    ShieldCheck,
+    Zap
 } from "lucide-react";
 
 // Animation variants
@@ -40,7 +47,7 @@ const staggerContainer = {
     }
 };
 
-export default function CorporateEventManagementClient() {
+export default function EmployeeEngagementActivitiesClient() {
     const { openPopup } = usePopup();
     const serviceImages = ServicesMediaService.getServicesImages();
     const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
@@ -52,8 +59,8 @@ export default function CorporateEventManagementClient() {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 bg-[#2A3959]">
                     <Image
-                        src={serviceImages.businessEvents}
-                        alt="Corporate Event Management"
+                        src={serviceImages.celebrationGalore}
+                        alt="Employee Engagement Activities"
                         fill
                         className="object-cover blur-[2px] scale-105"
                         priority
@@ -75,11 +82,11 @@ export default function CorporateEventManagementClient() {
 
                         {/* Main H1 Heading */}
                         <h1 className="text-4xl mb-12 sm:text-5xl md:text-6xl lg:text-7xl font-display text-white leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
-                            Corporate Event Management in Bangalore
+                            Employee Engagement & Team Building Activities in Bangalore
                         </h1>
 
                         <p className="text-lg sm:text-xl lg:text-2xl text-white max-w-4xl mx-auto leading-relaxed mb-20 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] font-medium">
-                            Transform your business gatherings into extraordinary experiences with Bangalore's leading corporate event management company
+                            Boost Motivation, Collaboration & Workplace Performance Through Curated Engagement & Team Experiences
                         </p>
 
                         {/* CTA Buttons */}
@@ -154,13 +161,13 @@ export default function CorporateEventManagementClient() {
 
                                 <div className="space-y-8">
                                     <p className="text-lg sm:text-xl text-gray-200 leading-relaxed font-light">
-                                        At <strong className="text-white font-semibold">White Massif</strong>, we specialize in delivering <span className="px-1 py-0.5 bg-[#F9A625]/20 text-[#FFD180] rounded">strategic corporate events in Bangalore</span> that go beyond logistics, events designed to <span className="text-white font-medium border-b border-[#F9A625]/50">align teams, elevate brands, and achieve measurable</span> <span className="text-[#F9A625] font-bold">business goals</span>.
+                                        At <strong className="text-white font-semibold">White Massif</strong>, we design <span className="text-[#F9A625] font-bold">impactful employee engagement and team building activities in Bangalore</span> that go beyond logistics, events designed to <span className="text-white font-medium border-b border-[#F9A625]/50">that promote stronger interpersonal relationships, strengthen teamwork, and enhance organizational culture.</span> <span>Whether you’re celebrating annual milestones, hosting interactive workshops, rewarding performance, or planning team offsites, our solutions are tailored to meet your unique goals and workforce dynamics.</span>.
                                     </p>
 
                                     <div className="w-full h-px bg-white/10"></div>
 
                                     <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                                        From high-stake business conferences to investor forums and all-hands meetings, we manage every detail with precision. As one of the most trusted <span className="text-white font-semibold italic">corporate event management companies in Bangalore</span>, we create experiences that leave a lasting impression.
+                                        With Bangalore’s vibrant corporate ecosystem and diverse venues, we help companies build <span className="text-white font-semibold italic">meaningful employee experiences that drive morale, productivity, and retention.</span>
                                     </p>
                                 </div>
                             </div>
@@ -177,81 +184,36 @@ export default function CorporateEventManagementClient() {
                             Our Expertise
                         </Badge>
                         <h2 className="text-4xl sm:text-6xl font-display text-[#2A3959] mb-6 max-w-6xl mx-auto">
-                            Our Corporate Event Management Services in Bangalore
+                            Our Employee Engagement & Team Building Services
                         </h2>
-                        <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            We offer end-to-end planning, production, and execution for a wide range of corporate events, tailored to your objectives, audience, and brand positioning.
-                        </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap justify-center gap-8">
                         {[
                             {
-                                icon: Presentation,
-                                title: "Business Conferences",
-                                description: "We plan and execute professional, large-scale business conferences that enable knowledge exchange, networking, and thought leadership.",
-                                includes: [
-                                    "Conference theme & agenda planning",
-                                    "Speaker management & coordination",
-                                    "Venue sourcing & setup",
-                                    "Stage design, AV & technical production",
-                                    "Registration & attendee experience management"
-                                ]
+                                icon: Sparkles,
+                                title: "Annual Day Celebrations",
+                                description: <>Celebrate milestones and company achievements with memorable <span className="font-semibold text-[#F9A625]">annual day events</span> that reflect your culture and success story. We handle everything, from event theme, entertainment, and award ceremonies to employee participation campaigns that make every individual feel valued. Annual celebrations are a powerful way to <span className="font-semibold text-[#F9A625]">reinforce organizational vision and unity.</span></>
                             },
                             {
-                                icon: Megaphone,
-                                title: "All-Hands Meetings",
-                                description: "Bring your entire organization together with seamless all-hands meetings that foster transparency, alignment, and motivation.",
-                                includes: [
-                                    "Leadership updates",
-                                    "Company milestones",
-                                    "Strategy rollouts",
-                                    "Hybrid & in-person formats"
-                                ]
+                                icon: Palette,
+                                title: "Themed Celebrations",
+                                description: <>Make employee engagement fun and immersive with <span className="font-semibold text-[#F9A625]">themed celebrations</span>. Whether it’s cultural festivals, seasonal celebrations, or customized themes tied to company values, we curate experiences that spark joy, encourage participation, and strengthen team spirit.</>
                             },
                             {
-                                icon: Rocket,
-                                title: "Kick-Off Events",
-                                description: "Start new financial years, product cycles, or major initiatives with high-energy kick-off events that set the tone for success.",
-                                includes: [
-                                    "Vision alignment",
-                                    "Team engagement",
-                                    "Leadership messaging",
-                                    "Interactive experiences"
-                                ]
+                                icon: MapPin,
+                                title: "Team Offsites",
+                                description: <>Get your team out of the office and into a fresh environment with <span className="font-semibold text-[#F9A625]">team offsite experiences</span>. Designed to foster collaboration and strategic thinking, our offsite programs combine structured activities with relaxation, networking, and leadership bonding. Offsites can be tailored to location, duration, and desired outcomes, from half-day workshops to multi-day retreats.</>
                             },
                             {
-                                icon: Globe,
-                                title: "Corporate Summits",
-                                description: "We manage executive-level and industry-focused corporate summits that position your organization as a market leader.",
-                                includes: [
-                                    "Curated content flow",
-                                    "Premium delegate experience",
-                                    "Sponsor & partner integrations",
-                                    "Brand storytelling through design"
-                                ]
+                                icon: Trophy,
+                                title: "Rewards & Recognition Programs",
+                                description: <>Celebrate excellence with <span className="font-semibold text-[#F9A625]">employee recognition and reward initiatives</span> that elevate workplace motivation. From formal award ceremonies to gamified recognition moments, we design programs that anchor performance-based appreciation into your company culture, encouraging long-term engagement and loyalty.</>
                             },
                             {
-                                icon: TrendingUp,
-                                title: "Investor Forums",
-                                description: "Host high-credibility investor forums that reflect professionalism, trust, and strategic intent.",
-                                includes: [
-                                    "Confidential planning & logistics",
-                                    "High-end venue management",
-                                    "Presentation & stage aesthetics",
-                                    "VIP guest handling"
-                                ]
-                            },
-                            {
-                                icon: Users,
-                                title: "Annual General Meetings (AGMs)",
-                                description: "We ensure AGMs are conducted smoothly, compliantly, and professionally, whether physical, virtual, or hybrid.",
-                                includes: [
-                                    "End-to-end AGM logistics",
-                                    "Shareholder experience",
-                                    "Technical & voting support",
-                                    "Compliance-friendly execution"
-                                ]
+                                icon: Lightbulb,
+                                title: "Interactive Workshops",
+                                description: <>Interactive workshops are structured, experiential sessions that focus on enhancing specific skills such as communication, problem-solving, creativity, and leadership. Using a mix of <span className="font-semibold text-[#F9A625]">hands-on exercises, facilitated discussions, and collaborative games</span>, our workshops help teams learn, connect, and grow together.</>
                             }
                         ].map((service, index) => (
                             <motion.div
@@ -260,9 +222,9 @@ export default function CorporateEventManagementClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group p-8 rounded-3xl bg-[#2A3959] border border-white/5 hover:border-[#F9A625]/20 hover:scale-[1.02] transition-all duration-300 shadow-xl"
+                                className="group p-8 rounded-3xl bg-[#2A3959] border border-white/5 hover:border-[#F9A625]/20 hover:scale-[1.02] transition-all duration-300 shadow-xl w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)]"
                             >
-                                <div className="flex items-center gap-4 mb-6 ">
+                                <div className="flex items-center gap-4 mb-6">
                                     <div className="w-14 h-14 bg-white text-[#2A3959] rounded-2xl flex items-center justify-center flex-shrink-0">
                                         <service.icon className="w-7 h-7" />
                                     </div>
@@ -270,24 +232,9 @@ export default function CorporateEventManagementClient() {
                                         {service.title}
                                     </h3>
                                 </div>
-                                <p className="text-white leading-relaxed mb-6">
+                                <p className="text-white leading-relaxed">
                                     {service.description}
                                 </p>
-
-                                <div className="border-t border-gray-100 pt-6">
-                                    <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
-                                        <div className="w-1 h-4 bg-[#F9A625] rounded-full"></div>
-                                        Includes
-                                    </h4>
-                                    <ul className="space-y-3">
-                                        {service.includes.map((item, i) => (
-                                            <li key={i} className="flex items-start text-sm text-white/70">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-[#F9A625] mt-1.5 mr-3 flex-shrink-0"></div>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -317,7 +264,7 @@ export default function CorporateEventManagementClient() {
                             </Badge>
                             <h2 className="flex flex-col text-4xl sm:text-5xl lg:text-6xl font-display text-white leading-tight max-w-4xl">
                                 <span className="flex">Why Choose White Massif for</span>
-                                <span className="text-[#F9A625] flex">Corporate Event Management?</span>
+                                <span className="text-[#F9A625] flex">Engagement & Team Building?</span>
                             </h2>
                         </motion.div>
                     </div>
@@ -334,29 +281,29 @@ export default function CorporateEventManagementClient() {
                             <div className="space-y-8 max-w-2xl">
                                 {[
                                     {
-                                        icon: Target,
-                                        title: "Strategy-First Approach",
-                                        desc: "We don’t just execute events, we design experiences aligned with your business objectives, audience psychology, and brand narrative."
+                                        icon: Puzzle,
+                                        title: "Tailored Engagement Strategy",
+                                        desc: "Every organization is different. We develop employee engagement programs that align with your culture, business goals, and workforce dynamics."
                                     },
                                     {
-                                        icon: Briefcase,
-                                        title: "Proven Corporate Expertise",
-                                        desc: "With extensive experience across IT, startups, enterprises, and MNCs, we understand corporate expectations, timelines, and governance."
+                                        icon: CheckCircle,
+                                        title: "End-to-End Execution",
+                                        desc: "From ideation and planning to logistics and on-site facilitation, we handle every detail, so your HR and leadership teams can focus on outcomes, not operations."
                                     },
                                     {
-                                        icon: Layers,
-                                        title: "End-to-End Ownership",
-                                        desc: "From concept to closure, one dedicated team manages planning, vendors, production, and on-ground execution."
+                                        icon: ShieldCheck,
+                                        title: "Proven Activity Framework",
+                                        desc: "Our team builds experiences grounded in best practices that improve communication, trust, problem-solving, and team cohesion, not just entertainment value."
                                     },
                                     {
                                         icon: MapPin,
-                                        title: "Flawless Execution in Bangalore",
-                                        desc: "Deep local expertise across venues, vendors, permissions, and logistics in Bangalore ensures reliability and speed."
+                                        title: "Local Expertise in Bangalore",
+                                        desc: "We leverage Bangalore’s diverse venues, from corporate spaces to resorts and outdoor settings, to create environments that energize and inspire participants."
                                     },
                                     {
-                                        icon: BarChart,
-                                        title: "Measurable Outcomes",
-                                        desc: "We focus on engagement, attendance, satisfaction, and brand recall, not just aesthetics."
+                                        icon: Zap,
+                                        title: "Participation-Driven Designs",
+                                        desc: "By combining structured activities with fun elements, we keep teams engaged, motivated, and ready to apply learnings back at work."
                                     }
                                 ].map((feature, idx) => (
                                     <div key={idx} className="flex gap-6">
@@ -428,10 +375,10 @@ export default function CorporateEventManagementClient() {
                             Our Methodology
                         </Badge>
                         <h2 className="text-4xl sm:text-6xl font-display text-[#2A3959] mb-8">
-                            Our Corporate Event Management Process
+                            Our Employee Engagement & Team Building Process
                         </h2>
                         <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                            At <strong className="text-[#2A3959] font-bold">White Massif</strong>, our corporate event management process is built to deliver <span className="font-semibold text-[#F9A625]">clarity, control, and consistency at every stage</span>. We follow a structured yet flexible approach that ensures <span className="font-semibold text-[#F9A625]">on-time delivery, budget discipline, and exceptional attendee experience</span>, regardless of event scale or complexity.
+                            At <strong className="text-[#2A3959] font-bold">White Massif</strong>, our employee engagement and team building process is designed to deliver <span className="font-semibold text-[#F9A625]">measurable behavioral impact</span>, not just momentary excitement. Every program is built around <span className="font-semibold text-[#F9A625]">people psychology, organizational goals, and real workplace challenges.</span>
                         </p>
                     </div>
 
@@ -439,40 +386,40 @@ export default function CorporateEventManagementClient() {
                     <div className="flex flex-wrap justify-center gap-8">
                         {[
                             {
-                                title: "Strategic Discovery & Requirement Mapping",
-                                desc: "Every successful corporate event starts with a deep understanding of your business objectives, audience profile, and success metrics.",
+                                title: "Engagement Objective Mapping & Workforce Understanding",
+                                desc: "We begin by understanding why the engagement activity is needed, not just what kind of activity is requested.",
                                 points: [
-                                    "Event purpose (alignment, communication, branding, compliance, engagement)",
-                                    "Target audience & stakeholder expectations",
-                                    "Event format (in-person, hybrid, virtual)",
-                                    "Budget framework & timelines",
-                                    "Brand guidelines and internal protocols"
+                                    "Organizational goals (culture building, collaboration, motivation, retention)",
+                                    "Team size, hierarchy & dynamics",
+                                    "Employee demographics & work environment",
+                                    "Past engagement efforts & feedback",
+                                    "Desired short-term and long-term outcomes"
                                 ],
-                                footer: <>This ensures the event strategy is <span className="font-semibold text-[#F9A625]">business-led, not execution-driven.</span></>
+                                footer: <>This ensures the program is <span className="font-semibold text-[#F9A625]">strategic, relevant, and outcome-oriented.</span></>
                             },
                             {
-                                title: "Concept Development & Experience Design",
-                                desc: "Once the foundation is clear, our team crafts a cohesive event concept that aligns messaging, flow, and visual identity.",
-                                points: ["Event theme and narrative", "Agenda & session flow planning", "Stage design & spatial planning", "Attendee journey mapping", "Engagement touchpoints & interactions"],
-                                footer: <>The focus is on creating <span className="font-semibold text-[#F9A625]">purposeful experiences</span>, not just good-looking setups.</>
+                                title: "Experience Design & Activity Customization",
+                                desc: "Based on insights gathered, we design custom engagement journeys that balance fun with purpose.",
+                                points: ["Selection of engagement format (celebration, workshop, offsite, recognition)", "Activity flow & participation design", "Alignment with company values & leadership messaging", "Engagement intensity planning (high-energy vs reflective)", "Inclusion & accessibility considerations"],
+                                footer: <>No two teams are the same, so no two engagement programs should be either.</>
                             },
                             {
-                                title: "Detailed Planning & Vendor Coordination",
-                                desc: "Our team handles all planning and coordination, acting as a single point of accountability.",
-                                points: ["Venue shortlisting & negotiations in Bangalore", "AV, lighting, staging & technical production", "Speaker & VIP logistics", "Vendor management & quality control", "Risk assessment & contingency planning"],
-                                footer: <>Every element is planned with <span className="font-semibold text-[#F9A625]">precision, compliance, and scalability</span> in mind.</>
+                                title: "Venue, Logistics & Program Planning",
+                                desc: "We manage all logistical and operational elements to ensure a smooth and distraction-free experience.",
+                                points: ["Venue identification (corporate spaces, resorts, outdoor locations in Bangalore)", "Setup, props, materials & activity infrastructure", "Time management & session sequencing", "Safety, permissions & contingency planning"],
+                                footer: <>Everything is structured to allow teams to <span className="font-semibold text-[#F9A625]">fully focus on participation and connection.</span></>
                             },
                             {
-                                title: "On-Ground Execution & Live Event Management",
-                                desc: "Our experienced team takes full control on the day of the event.",
-                                points: ["End-to-end on-site coordination", "Run-of-show & timeline control", "Speaker, leadership & guest handling", "Technical supervision & live troubleshooting", "Seamless transitions between sessions"],
-                                footer: <>Our team operates quietly in the background, ensuring the event unfolds <span className="font-semibold text-[#F9A625]">flawlessly and stress-free</span>for your stakeholders.</>
+                                title: "Facilitated Execution & On-Ground Engagement",
+                                desc: "Execution is led by experienced facilitators who know how to energize teams while maintaining purpose.",
+                                points: ["Live facilitation & activity moderation", "Group dynamics & participation balance", "Energy management across sessions", "Leadership & stakeholder coordination", "Real-time adjustments for maximum impact"],
+                                footer: <>The result is high participation, meaningful interaction, and lasting engagement.</>
                             },
                             {
                                 title: "Post-Event Closure, Reporting & Insights",
-                                desc: "Our involvement doesn’t end when the event does.",
-                                points: ["Event closure & vendor settlements", "Feedback collection & analysis", "Attendance & engagement reporting", "Visual documentation handover", "Strategic recommendations for future events"],
-                                footer: <>This stage helps organizations <span className="font-semibold text-[#F9A625]">measure ROI and refine future corporate events.</span>.</>
+                                desc: "Engagement doesn’t end when the activity does.",
+                                points: ["Participation & engagement observations", "Feedback collection & qualitative insights", "Key behavioral takeaways", "Recommendations for future engagement initiatives"],
+                                footer: <>This helps organizations <span className="font-semibold text-[#F9A625]">build continuity in their engagement strategy</span>, not one-off events.</>
                             }
                         ].map((step, index) => (
                             <motion.div
@@ -538,51 +485,46 @@ export default function CorporateEventManagementClient() {
                             Industries We Serve
                         </h2>
                         <p className="text-lg text-white max-w-4xl mx-auto leading-relaxed">
-                            Our experience spans across diverse industries, enabling us to understand <span className="font-semibold text-[#F9A625]">sector-specific expectations, compliance requirements, and audience behaviors.</span> This allows us to design corporate events that feel <span className="font-semibold text-[#F9A625]">relevant, credible, and impactful.</span>
+                            Our employee engagement and team building solutions are crafted with <span className="font-semibold text-[#F9A625]">industry context in mind</span>, ensuring relevance, credibility, and acceptance across diverse work cultures.
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
                             {
-                                title: "Information Technology & Tech Companies",
-                                desc: "We work extensively with IT firms, SaaS companies, and product organizations to deliver:",
+                                title: "Technology & IT Companies",
+                                desc: "In Bangalore’s fast-paced tech ecosystem, we help teams:",
                                 points: [
-                                    "Annual conferences",
-                                    "Leadership offsites",
-                                    "All-hands meetings",
-                                    "Product & innovation showcases"
+                                    "Improve collaboration across functions",
+                                    "Break silos in large organizations",
+                                    "Re-energize remote or hybrid teams",
+                                    "Foster innovation-driven mindsets"
                                 ]
                             },
                             {
-                                title: "Startups & Scale-Ups",
-                                desc: "Fast-growing companies trust us for:",
-                                points: ["Kick-off events", "Investor forums", "Town halls & internal communications", "Brand positioning events"],
-                                footer: "We understand the need for speed, agility, and cost efficiency without compromising quality."
+                                title: "Startups & Growth-Stage Companies",
+                                desc: "For startups and scale-ups, engagement plays a key role in culture building.",
+                                points: ["Founding team alignment", "Rapidly growing teams", "High-pressure work environments", "Culture reinforcement during scaling phases"],
                             },
                             {
                                 title: "BFSI & Financial Services",
-                                desc: "For banks, financial institutions, and fintech companies, we manage:",
-                                points: ["Investor meets", "AGMs", "Compliance-driven events", "Leadership summits"],
-                                footer: "Our approach emphasizes precision, confidentiality, and professionalism."
+                                desc: "Structured engagement is critical in high-compliance, high-stress environments.",
+                                points: ["Trust building", "Performance recognition", "Cross-team coordination", "Stress relief & morale boosting"],
                             },
                             {
-                                title: "Manufacturing & Engineering",
-                                desc: "We support manufacturing and engineering organizations with:",
-                                points: ["Corporate conferences", "Dealer & partner meets", "Annual business reviews", "Leadership forums"],
-                                footer: "These events are designed to balance functionality with brand presence."
+                                title: "Manufacturing & Engineering Organizations",
+                                desc: "For technical and operational teams, engagement programs are designed to:",
+                                points: ["Enhance problem-solving skills", "Improve communication across departments", "Strengthen leadership alignment", "Encourage collaborative thinking"],
                             },
                             {
                                 title: "Healthcare, Pharma & Life Sciences",
-                                desc: "For regulated industries, we deliver:",
-                                points: ["Corporate summits", "Internal leadership meetings", "Stakeholder conferences", "Knowledge-sharing forums"],
-                                footer: "All events are executed with strict adherence to industry norms and protocols."
+                                desc: "We create sensitive, purpose-driven engagement experiences that emphasize:",
+                                points: ["Team empathy & communication", "Stress management", "Knowledge sharing", "Leadership and peer bonding"],
                             },
                             {
-                                title: "Enterprise & Corporate Organizations",
-                                desc: "We partner with large enterprises across sectors for:",
-                                points: ["Company-wide town halls", "Annual strategy meets", "Executive summits", "High-stake internal & external events"],
-                                footer: "Our team understands enterprise-level governance, approvals, and reporting structures."
+                                title: "Large Enterprises & Multinational Corporations",
+                                desc: "For large workforces, we deliver scalable engagement programs that maintain personalization.",
+                                points: ["Company-wide engagement days", "Multi-team workshops", "Leadership-driven recognition programs", "Structured offsites & celebrations"],
                             }
                         ].map((industry, index) => (
                             <motion.div
@@ -607,25 +549,9 @@ export default function CorporateEventManagementClient() {
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="pt-6 border-t border-gray-50">
-                                    <p className="text-sm font-medium text-[#2A3959]/70 italic flex items-center gap-2">
-                                        {industry.footer}
-                                    </p>
-                                </div>
                             </motion.div>
                         ))}
                     </div>
-                </div>
-            </section>
-            {/* Corporate Events in Bangalore Section */}
-            <section className="py-24 bg-gray-50 text-center">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-3xl sm:text-5xl font-display text-[#2A3959] mb-6">
-                        Corporate Events in Bangalore –<span className="text-[#F9A625]"> Built for Today’s Business Needs</span>
-                    </h2>
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                        Whether you’re hosting a high-profile corporate summit, an internal all-hands meeting, or a formal AGM, White Massif ensures your event reflects professionalism, precision, and purpose.
-                    </p>
                 </div>
             </section>
 
@@ -636,30 +562,29 @@ export default function CorporateEventManagementClient() {
 
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <h2 className="text-3xl sm:text-5xl font-display text-white mb-8">
-                        Planning a Corporate Event in Bangalore?
+                        Ready to Elevate Employee Engagement?
                     </h2>
                     <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                        Partner with White Massif for seamless corporate event management that delivers real business impact.
+                        Transform the way your team connects, collaborates, and grows with our expertly designed engagement and team building experiences.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">
                         <Button
                             variant="outline"
                             onClick={() => window.location.href = 'https://whitemassif.com/contact'}
-                            className="bg-transparent border-white text-white hover:!bg-white hover:!text-[#2A3959] transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg px-8 py-6 text-lg rounded-2xl"
+                            className="bg-transparent border-white text-white hover:!bg-white hover:!text-[#2A3959] transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg px-8 py-6 text-sm lg:text-lg rounded-2xl"
                         >
-                            Talk to Our Event Experts
+                            Talk to Our Employee Engagement Specialists
                         </Button>
                         <Button
                             onClick={() => openPopup('corporate-event-management-cta')}
-                            className="btn-primary px-8 py-6 text-lg rounded-2xl bg-[#F9A625] text-white hover:bg-[#e0921a] border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                            className="btn-primary px-8 py-6 text-sm lg:text-lg rounded-2xl bg-[#F9A625] text-white hover:bg-[#e0921a] border-none shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                         >
-                            Get a Custom Event Proposal
+                            Request a Custom Engagement Plan
                             <ArrowRight className="ml-2 w-5 h-5" />
                         </Button>
                     </div>
                 </div>
             </section>
-
 
             {/* FAQ Section */}
             <section className="py-24 bg-white relative">
@@ -673,24 +598,24 @@ export default function CorporateEventManagementClient() {
                     <div className="space-y-4">
                         {[
                             {
-                                q: "What types of corporate events do you manage in Bangalore?",
-                                a: "We manage business conferences, all-hands meetings, kick-off events, corporate summits, investor forums, and AGMs, both in-person and hybrid."
+                                q: "What types of team building activities can you customize?",
+                                a: "We design a wide range of activities including outdoor adventures, interactive workshops, collaborative problem-solving games, and theme-based celebrations tailored to your goals."
                             },
                             {
-                                q: "Do you handle end-to-end corporate event management?",
-                                a: "Yes. We manage everything from concept, venues, vendors, and production to live execution and post-event closure."
+                                q: "Can you handle events for remote or hybrid teams?",
+                                a: "Yes. We can plan hybrid engagement activities that combine in-person experiences with virtual collaboration elements for distributed teams."
                             },
                             {
-                                q: "Can you manage large-scale corporate events?",
-                                a: "Absolutely. We specialize in mid-to-large scale corporate events with complex logistics and senior stakeholders."
+                                q: "What is the ideal group size for these activities?",
+                                a: "Activities can be designed for small teams of 10–20 people or large groups of 100+ participants depending on your event goals and space requirements."
                             },
                             {
-                                q: "Do you provide customized event solutions?",
-                                a: "Yes. Every event is tailored based on business goals, audience type, and brand positioning."
+                                q: "How far in advance should we plan employee engagement events?",
+                                a: "For larger programs and offsites, it’s ideal to plan 4–8 weeks ahead. Shorter engagement workshops can be organized within shorter timelines as needed."
                             },
                             {
-                                q: "How early should we plan a corporate event?",
-                                a: "Ideally 4–8 weeks in advance for large events. However, we can also handle short-timeline corporate events when required."
+                                q: "Do you provide post-event engagement insights?",
+                                a: "Yes. We provide summary reports and insights that help you measure engagement outcomes and inform future planning."
                             }
                         ].map((faq, index) => (
                             <motion.div
