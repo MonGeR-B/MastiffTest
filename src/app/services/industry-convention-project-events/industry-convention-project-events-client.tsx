@@ -66,7 +66,7 @@ export default function IndustryConventionProjectEventsClient() {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 bg-[#2A3959]">
                     <Image
-                        src={serviceImages.conventionMeet}
+                        src={serviceImages.specialEvents}
                         alt="Industry Convention & Project Events"
                         fill
                         className="object-cover blur-[2px] scale-105"
@@ -195,7 +195,7 @@ export default function IndustryConventionProjectEventsClient() {
                         </h2>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-8">
+                    <div className="grid md:grid-cols-2 gap-8">
                         {[
                             {
                                 icon: Store,
@@ -215,7 +215,7 @@ export default function IndustryConventionProjectEventsClient() {
                             {
                                 icon: Puzzle,
                                 title: "Custom Event Solutions",
-                                description: <>Some events don’t fit into standard formats, and that’s where our custom event solutions come in. We design and execute tailored event concepts based on unique objectives, audiences, and environments. From multi-format conventions to one-of-a-kind industry experiences, we build solutions that are aligned with purpose and executed with precision.</>
+                                description: <>Some events don't fit into standard formats, and that's where our custom event solutions come in. We design and execute tailored event concepts based on unique objectives, audiences, and environments. From multi-format conventions to one-of-a-kind industry experiences, we build solutions that are aligned with purpose and executed with precision.</>
                             }
                         ].map((service, index) => (
                             <motion.div
@@ -224,7 +224,7 @@ export default function IndustryConventionProjectEventsClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group p-8 rounded-3xl bg-[#2A3959] border border-white/5 hover:border-[#F9A625]/20 hover:scale-[1.02] transition-all duration-300 shadow-xl w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)]"
+                                className="group p-8 rounded-3xl bg-[#2A3959] border border-white/5 hover:border-[#F9A625]/20 hover:scale-[1.02] transition-all duration-300 shadow-xl"
                             >
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-14 h-14 bg-white text-[#2A3959] rounded-2xl flex items-center justify-center flex-shrink-0">

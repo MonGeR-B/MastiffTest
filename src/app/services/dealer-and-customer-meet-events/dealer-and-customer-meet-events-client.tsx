@@ -192,7 +192,7 @@ export default function DealerAndCustomerMeetEventsClient() {
                         </h2>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-8">
+                    <div className="grid md:grid-cols-2 gap-8">
                         {[
                             {
                                 icon: Handshake,
@@ -221,7 +221,7 @@ export default function DealerAndCustomerMeetEventsClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group p-8 rounded-3xl bg-[#2A3959] border border-white/5 hover:border-[#F9A625]/20 hover:scale-[1.02] transition-all duration-300 shadow-xl w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)]"
+                                className="group p-8 rounded-3xl bg-[#2A3959] border border-white/5 hover:border-[#F9A625]/20 hover:scale-[1.02] transition-all duration-300 shadow-xl"
                             >
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-14 h-14 bg-white text-[#2A3959] rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -484,7 +484,7 @@ export default function DealerAndCustomerMeetEventsClient() {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap justify-center gap-8">
                         {[
                             {
                                 title: "Manufacturing & Industrial Organizations",
@@ -523,7 +523,7 @@ export default function DealerAndCustomerMeetEventsClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group p-8 rounded-3xl bg-white border border-gray-100 shadow-lg hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300"
+                                className="group p-8 rounded-3xl bg-white border border-gray-100 shadow-lg hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
                             >
                                 <h3 className="text-2xl font-bold text-[#2A3959] mb-4 group-hover:text-[#F9A625] transition-colors">
                                     {industry.title}

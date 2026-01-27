@@ -181,7 +181,7 @@ export default function ProductBrandLaunchEventsClient() {
                             We provide <strong className="text-[#2A3959] font-bold">end-to-end launch event management</strong>, combining creative strategy, production, media alignment, and flawless execution.</p>
                     </div>
 
-                    <div className="flex flex-wrap justify-center gap-8">
+                    <div className="grid md:grid-cols-2 gap-8">
                         {[
                             {
                                 icon: Rocket,
@@ -191,7 +191,7 @@ export default function ProductBrandLaunchEventsClient() {
                             {
                                 icon: Building2,
                                 title: "Facility & Operations Launches",
-                                description: <>Facility and operations launches mark significant milestones in an organization’s growth journey. We curate professional and well-orchestrated launch events for corporate offices, manufacturing units, R&D centers, and operational expansions. These launches are designed to showcase scale, capability, and leadership vision while ensuring smooth coordination of stakeholders, guests, and on-ground experiences.</>
+                                description: <>Facility and operations launches mark significant milestones in an organization's growth journey. We curate professional and well-orchestrated launch events for corporate offices, manufacturing units, R&D centers, and operational expansions. These launches are designed to showcase scale, capability, and leadership vision while ensuring smooth coordination of stakeholders, guests, and on-ground experiences.</>
                             },
                             {
                                 icon: Megaphone,
@@ -210,7 +210,7 @@ export default function ProductBrandLaunchEventsClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group p-8 rounded-3xl bg-[#2A3959] border border-white/5 hover:border-[#F9A625]/20 hover:scale-[1.02] transition-all duration-300 shadow-xl w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)]"
+                                className="group p-8 rounded-3xl bg-[#2A3959] border border-white/5 hover:border-[#F9A625]/20 hover:scale-[1.02] transition-all duration-300 shadow-xl"
                             >
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-14 h-14 bg-white text-[#2A3959] rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -371,7 +371,7 @@ export default function ProductBrandLaunchEventsClient() {
                     </div>
 
                     {/* Process Steps */}
-                    <div className="flex flex-wrap justify-center gap-8">
+                    <div className="grid md:grid-cols-2 gap-8">
                         {[
                             {
                                 title: "Launch Objective & Stakeholder Alignment",
@@ -408,7 +408,7 @@ export default function ProductBrandLaunchEventsClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 w-full md:w-[calc(50%-2rem)] lg:w-[calc(33.333%-2rem)] flex flex-col"
+                                className="group bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
                             >
                                 {/* Header */}
                                 <div className="flex items-center gap-4 mb-6">
@@ -469,7 +469,7 @@ export default function ProductBrandLaunchEventsClient() {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap justify-center gap-8">
                         {[
                             {
                                 title: "Technology & SaaS Companies",
@@ -478,7 +478,7 @@ export default function ProductBrandLaunchEventsClient() {
                                     "Innovation & usability",
                                     "Product differentiation",
                                     "Enterprise & consumer communication"
-                                ]
+                                ],
                             },
                             {
                                 title: "Startups & Growth-Stage Businesses",
@@ -507,7 +507,7 @@ export default function ProductBrandLaunchEventsClient() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="group p-8 rounded-3xl bg-white border border-gray-100 shadow-lg hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300"
+                                className="group p-8 rounded-3xl bg-white border border-gray-100 shadow-lg hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)]"
                             >
                                 <h3 className="text-2xl font-bold text-[#2A3959] mb-4 group-hover:text-[#F9A625] transition-colors">
                                     {industry.title}
