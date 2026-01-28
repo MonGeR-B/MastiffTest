@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -46,15 +47,16 @@ const staggerContainer = {
 
 // Service Categories for Quick Navigation
 const serviceCategories = [
-  { id: "corporate-events", name: "Business Events", icon: Building2, description: "Professional business events planning and execution with attention to every detail" },
-  { id: "celebrations", name: "Celebrations Galore", icon: PartyPopper, description: "Professional celebrations galore planning and execution with attention to every detail" },
-  { id: "inaugurations", name: "Launches", icon: Scissors, description: "Professional launches planning and execution with attention to every detail" },
-  { id: "hybrid-events", name: "Hybrid Events", icon: Monitor, description: "Professional planning and execution with attention to every detail" },
-  { id: "conventions", name: "Industry Conventions", icon: Users, description: "Professional industry conventions planning and execution with attention to every detail" },
-  { id: "special-projects", name: "Special Projects", icon: Star, description: "Professional special projects planning and execution with attention to every detail" }
+  { id: "corporate-events", name: "Business Events", icon: Building2, description: "Professional business events planning and execution with attention to every detail", path: "/services/corporate-event-management" },
+  { id: "celebrations", name: "Celebrations Galore", icon: PartyPopper, description: "Professional celebrations galore planning and execution with attention to every detail", path: "/services/employee-engagement-activities" },
+  { id: "inaugurations", name: "Launches", icon: Scissors, description: "Professional launches planning and execution with attention to every detail", path: "/services/product-brand-launch-events" },
+  { id: "hybrid-events", name: "Hybrid Events", icon: Monitor, description: "Professional planning and execution with attention to every detail", path: "/services/hybrid-and-virtual-events" },
+  { id: "conventions", name: "Industry Conventions", icon: Users, description: "Professional industry conventions planning and execution with attention to every detail", path: "/services/dealer-and-customer-meet-events" },
+  { id: "special-projects", name: "Special Projects", icon: Star, description: "Professional special projects planning and execution with attention to every detail", path: "/services/industry-convention-project-events" }
 ];
 
 export default function ServicesClient() {
+  const router = useRouter();
   const heroRef = useRef(null);
   const { openPopup } = usePopup();
 
@@ -405,7 +407,7 @@ export default function ServicesClient() {
                 <motion.button
                   key={category.id}
                   className="group relative mobile-card bg-white shadow-lg hover:shadow-2xl border border-gray-100 hover:border-[#F9A625]/30 transition-all duration-500 hover:-translate-y-2 sm:hover:-translate-y-3 hover:bg-gradient-to-br hover:from-white hover:to-[#F9A625]/5 overflow-hidden mobile-animation"
-                  onClick={() => scrollToService(category.id)}
+                  onClick={() => router.push(category.path)}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}

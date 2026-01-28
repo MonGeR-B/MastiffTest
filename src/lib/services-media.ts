@@ -9,7 +9,9 @@ export class ServicesMediaService {
       specialEvents: '/assets/media/Services/special events.jpg',
       servicesLanding: '/assets/media/Services/Services- Landing page 1.jpg',
       conventionMeet: '/assets/media/Services/IndustryConventionCustomer&DealerMeet.jpg',
-      generalServices: '/assets/media/Services/Copy of Home page 2 -Industry Convention, Customer & Dealers Meet.jpg'
+      generalServices: '/assets/media/Services/Copy of Home page 2 -Industry Convention, Customer & Dealers Meet.jpg',
+      corporateOffsite: '/assets/media/Services/LaunchesProductsFacility&Operations.jpg',
+      venueSelection: '/assets/media/Services/IndustryConventionCustomer&DealerMeet.jpg'
     };
 
     return serviceImageMap;
