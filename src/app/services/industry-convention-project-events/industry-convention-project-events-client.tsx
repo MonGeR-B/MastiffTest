@@ -69,9 +69,11 @@ export default function IndustryConventionProjectEventsClient() {
                         src={serviceImages.specialEvents}
                         alt="Industry Convention & Project Events"
                         fill
-                        className="object-cover blur-[2px] scale-105"
+                        className="object-cover scale-105"
                         priority
                     />
+                    {/* Dark Overlay */}
+                    <div className="absolute inset-0 bg-black/40"></div>
                 </div>
 
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -82,7 +84,7 @@ export default function IndustryConventionProjectEventsClient() {
                         className="text-center"
                     >
                         {/* Badge */}
-                        <Badge className="mb-12 bg-[#F9A625]/80 backdrop-blur-md text-white border-[#F9A625] px-6 py-2 shadow-lg">
+                        <Badge className="mb-12 mt-6 bg-[#F9A625]/80 backdrop-blur-md text-white border-[#F9A625] px-6 py-2 shadow-lg">
                             <Sparkles className="w-4 h-4 mr-2" />
                             Premium Event Management Services
                         </Badge>
