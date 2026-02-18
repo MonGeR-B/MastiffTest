@@ -4,23 +4,35 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles, ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
+import { Menu, X, Sparkles, ArrowRight, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { usePopup } from '@/components/popup-provider';
+
+// Service pages for dropdown
+const servicePages = [
+  { name: 'Business Events', href: '/services/corporate-event-management' },
+  { name: 'Celebrations Galore', href: '/services/employee-engagement-activities' },
+  { name: 'Launches', href: '/services/product-brand-launch-events' },
+  { name: 'Hybrid Events', href: '/services/hybrid-and-virtual-events' },
+  { name: 'Industry Conventions', href: '/services/dealer-and-customer-meet-events' },
+  { name: 'Special Projects', href: '/services/industry-convention-project-events' }
+];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesHovered, setIsServicesHovered] = useState(false);
+  const [isServicesExpanded, setIsServicesExpanded] = useState(false);
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const { openPopup } = usePopup();
 
   // Check if we're on homepage
   const isHomepage = pathname === '/';
-  
+
   // Check if we're on a page with dark hero background
-  const isDarkHeroPage = pathname === '/services' || pathname === '/portfolio' || pathname === '/work';
-  
+  const isDarkHeroPage = pathname.startsWith('/services') || pathname === '/portfolio' || pathname === '/work' || pathname === '/team';
+
   // Determine logo color based on page and scroll state
   const shouldLogoBeBlack = isHomepage || isScrolled;
 
@@ -55,18 +67,18 @@ export default function Navigation() {
   const getHeaderBackground = () => {
     if (isHomepage) {
       // On homepage, always have some background to stand out from video
-      return isScrolled 
-        ? 'bg-white/95 backdrop-blur-2xl border-b border-gray-200/50 shadow-lg' 
+      return isScrolled
+        ? 'bg-white/95 backdrop-blur-2xl border-b border-gray-200/50 shadow-lg'
         : 'bg-white/90 backdrop-blur-xl border-b border-white/20';
     } else if (isDarkHeroPage) {
       // On dark hero pages, use dark glass backgrounds for visibility
-      return isScrolled 
-        ? 'bg-black/80 backdrop-blur-2xl border-b border-white/10 shadow-2xl' 
+      return isScrolled
+        ? 'bg-black/80 backdrop-blur-2xl border-b border-white/10 shadow-2xl'
         : 'bg-black/40 backdrop-blur-xl border-b border-white/10';
     } else {
       // On other pages, keep original transparent to glass behavior
-      return isScrolled 
-        ? 'glass-dark backdrop-blur-2xl border-b border-white/10 shadow-2xl shadow-black/20' 
+      return isScrolled
+        ? 'glass-dark backdrop-blur-2xl border-b border-white/10 shadow-2xl shadow-black/20'
         : 'bg-transparent';
     }
   };
@@ -80,7 +92,7 @@ export default function Navigation() {
       >
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex h-16 lg:h-20 items-center justify-between">
-            
+
             {/* Premium Logo */}
             <motion.div
               style={{ y: logoY, scale: logoScale }}
@@ -89,25 +101,118 @@ export default function Navigation() {
               <Link href="/" className="group flex items-center space-x-4">
                 {/* Company Logo */}
                 <div className="relative transition-all duration-300">
-                  <img 
+                  <img
                     src="/WM LOGO-01.png"
-                    alt="White Massif Event Management Logo" 
+                    alt="White Massif Event Management Logo"
                     className="h-8 sm:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105"
                   />
                 </div>
-                
+
               </Link>
             </motion.div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1">
-              {navItems.map((item) => (
-                <Link key={item.name} href={item.href}>
-                  <motion.div
-                    className={`relative px-3 lg:px-4 py-2 rounded-xl font-medium text-sm lg:text-base transition-all duration-300 ${
-                      pathname === item.href
-                        ? isHomepage 
-                          ? 'text-[#F9A625] bg-[#F9A625]/10' 
+              {navItems.map((item) => {
+                // Special handling for Services menu
+                if (item.name === 'Services') {
+                  return (
+                    <div
+                      key={item.name}
+                      className="relative"
+                      onMouseEnter={() => setIsServicesHovered(true)}
+                      onMouseLeave={() => setIsServicesHovered(false)}
+                    >
+                      <Link href={item.href}>
+                        <motion.div
+                          className={`relative px-3 lg:px-4 py-2 rounded-xl font-medium text-sm lg:text-base transition-all duration-300 ${pathname === item.href || pathname.startsWith('/services/')
+                            ? isHomepage
+                              ? 'text-[#F9A625] bg-[#F9A625]/10'
+                              : isDarkHeroPage
+                                ? 'text-[#F9A625] bg-[#F9A625]/20'
+                                : 'text-amber-600 bg-amber-50'
+                            : isHomepage
+                              ? 'text-[#2A3959] hover:text-[#F9A625] hover:bg-[#F9A625]/5'
+                              : isDarkHeroPage
+                                ? 'text-white hover:text-[#F9A625] hover:bg-white/10'
+                                : 'text-neutral-700 hover:text-amber-600 hover:bg-neutral-50'
+                            }`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          {item.name}
+                          {(pathname === item.href || pathname.startsWith('/services/')) && (
+                            <motion.div
+                              className={`absolute inset-0 rounded-xl -z-10 ${isHomepage
+                                ? 'bg-gradient-to-r from-[#F9A625]/10 to-[#F9A625]/5'
+                                : isDarkHeroPage
+                                  ? 'bg-gradient-to-r from-[#F9A625]/20 to-[#F9A625]/10'
+                                  : 'bg-gradient-to-r from-amber-100 to-orange-100'
+                                }`}
+                              layoutId="activeTab"
+                              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                            />
+                          )}
+                        </motion.div>
+                      </Link>
+
+                      {/* Services Dropdown */}
+                      <AnimatePresence>
+                        {isServicesHovered && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            transition={{ duration: 0.2 }}
+                            className={`absolute top-full left-0 mt-2 w-64 rounded-2xl shadow-2xl border overflow-hidden z-50 ${isHomepage
+                              ? 'bg-white/95 backdrop-blur-xl border-gray-200'
+                              : isDarkHeroPage
+                                ? 'bg-black/90 backdrop-blur-xl border-white/10'
+                                : 'bg-white border-gray-200'
+                              }`}
+                          >
+                            <div className="py-2">
+                              {servicePages.map((service, idx) => (
+                                <Link key={service.href} href={service.href}>
+                                  <motion.div
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: idx * 0.05 }}
+                                    className={`px-4 py-3 transition-all duration-200 ${pathname === service.href
+                                      ? isHomepage
+                                        ? 'bg-[#F9A625]/10 text-[#F9A625]'
+                                        : isDarkHeroPage
+                                          ? 'bg-[#F9A625]/20 text-[#F9A625]'
+                                          : 'bg-amber-50 text-amber-600'
+                                      : isHomepage
+                                        ? 'text-[#2A3959] hover:bg-[#F9A625]/5 hover:text-[#F9A625]'
+                                        : isDarkHeroPage
+                                          ? 'text-white hover:bg-white/10 hover:text-[#F9A625]'
+                                          : 'text-neutral-700 hover:bg-neutral-50 hover:text-amber-600'
+                                      }`}
+                                  >
+                                    <div className="flex items-center justify-between">
+                                      <span className="text-sm font-medium">{service.name}</span>
+                                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    </div>
+                                  </motion.div>
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                }
+
+                // Regular menu items
+                return (
+                  <Link key={item.name} href={item.href}>
+                    <motion.div
+                      className={`relative px-3 lg:px-4 py-2 rounded-xl font-medium text-sm lg:text-base transition-all duration-300 ${pathname === item.href
+                        ? isHomepage
+                          ? 'text-[#F9A625] bg-[#F9A625]/10'
                           : isDarkHeroPage
                             ? 'text-[#F9A625] bg-[#F9A625]/20'
                             : 'text-amber-600 bg-amber-50'
@@ -116,40 +221,39 @@ export default function Navigation() {
                           : isDarkHeroPage
                             ? 'text-white hover:text-[#F9A625] hover:bg-white/10'
                             : 'text-neutral-700 hover:text-amber-600 hover:bg-neutral-50'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item.name}
-                    {pathname === item.href && (
-                      <motion.div
-                        className={`absolute inset-0 rounded-xl -z-10 ${
-                          isHomepage 
-                            ? 'bg-gradient-to-r from-[#F9A625]/10 to-[#F9A625]/5' 
+                        }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {item.name}
+                      {pathname === item.href && (
+                        <motion.div
+                          className={`absolute inset-0 rounded-xl -z-10 ${isHomepage
+                            ? 'bg-gradient-to-r from-[#F9A625]/10 to-[#F9A625]/5'
                             : isDarkHeroPage
                               ? 'bg-gradient-to-r from-[#F9A625]/20 to-[#F9A625]/10'
                               : 'bg-gradient-to-r from-amber-100 to-orange-100'
-                        }`}
-                        layoutId="activeTab"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                  </motion.div>
-                </Link>
-              ))}
+                            }`}
+                          layoutId="activeTab"
+                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                        />
+                      )}
+                    </motion.div>
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* CTA Button & Mobile Menu */}
             <div className="flex items-center space-x-4">
               <Link href="/contact">
-                <Button 
-                  className={`hidden md:flex text-sm px-6 py-2 ${
-                    isHomepage 
-                      ? 'bg-[#F9A625] hover:bg-[#F9A625]/90 text-black' 
-                      : isDarkHeroPage
-                        ? 'bg-[#F9A625] hover:bg-[#F9A625]/90 text-black'
-                        : 'btn-primary'
-                  }`}>
+                <Button
+                  className={`hidden md:flex text-sm px-6 py-2 ${isHomepage
+                    ? 'bg-[#F9A625] hover:bg-[#F9A625]/90 text-black'
+                    : isDarkHeroPage
+                      ? 'bg-[#F9A625] hover:bg-[#F9A625]/90 text-black'
+                      : 'btn-primary'
+                    }`}>
                   <span>Contact Us</span>
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
@@ -158,13 +262,12 @@ export default function Navigation() {
               {/* Mobile menu button - Touch Optimized */}
               <motion.button
                 onClick={toggleMenu}
-                className={`lg:hidden relative mobile-touch-target rounded-xl flex items-center justify-center transition-colors ${
-                  isHomepage 
-                    ? 'bg-gray-100 hover:bg-gray-200' 
-                    : isDarkHeroPage
-                      ? 'bg-white/20 hover:bg-white/30 backdrop-blur-sm'
-                      : 'glass hover:bg-neutral-100'
-                }`}
+                className={`lg:hidden relative mobile-touch-target rounded-xl flex items-center justify-center transition-colors ${isHomepage
+                  ? 'bg-gray-100 hover:bg-gray-200'
+                  : isDarkHeroPage
+                    ? 'bg-white/20 hover:bg-white/30 backdrop-blur-sm'
+                    : 'glass hover:bg-neutral-100'
+                  }`}
                 style={{ minWidth: '44px', minHeight: '44px' }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -240,27 +343,109 @@ export default function Navigation() {
                 {/* Navigation Links */}
                 <div className="flex-1 px-6 py-8">
                   <nav className="space-y-2">
-                    {navItems.map((item, index) => (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <Link
-                          href={item.href}
-                          onClick={toggleMenu}
-                          className={`block mobile-touch-target px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                            pathname === item.href
+                    {navItems.map((item, index) => {
+                      // Special handling for Services menu on mobile
+                      if (item.name === 'Services') {
+                        return (
+                          <motion.div
+                            key={item.name}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                          >
+                            {/* Services main item with arrow button */}
+                            <div className="flex items-center gap-2">
+                              {/* Services link - navigates to /services */}
+                              <Link
+                                href={item.href}
+                                onClick={toggleMenu}
+                                className={`flex-1 mobile-touch-target px-4 py-3 rounded-xl font-medium transition-all duration-300 ${pathname === item.href
+                                  ? 'text-amber-400 bg-amber-500/20'
+                                  : 'text-white/80 hover:text-white hover:bg-white/10'
+                                  }`}
+                                style={{ minHeight: '44px' }}
+                              >
+                                {item.name}
+                              </Link>
+
+                              {/* Arrow button - expands submenu */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setIsServicesExpanded(!isServicesExpanded);
+                                }}
+                                className="mobile-touch-target p-3 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300"
+                                style={{ minWidth: '44px', minHeight: '44px' }}
+                                aria-label="Toggle services submenu"
+                              >
+                                <motion.div
+                                  animate={{ rotate: isServicesExpanded ? 180 : 0 }}
+                                  transition={{ duration: 0.2 }}
+                                >
+                                  <ChevronDown className="w-5 h-5" />
+                                </motion.div>
+                              </button>
+                            </div>
+
+                            {/* Services submenu - expandable */}
+                            <AnimatePresence>
+                              {isServicesExpanded && (
+                                <motion.div
+                                  initial={{ height: 0, opacity: 0 }}
+                                  animate={{ height: 'auto', opacity: 1 }}
+                                  exit={{ height: 0, opacity: 0 }}
+                                  transition={{ duration: 0.3 }}
+                                  className="overflow-hidden ml-4 mt-2 space-y-1"
+                                >
+                                  {servicePages.map((service, idx) => (
+                                    <motion.div
+                                      key={service.href}
+                                      initial={{ opacity: 0, x: -10 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: idx * 0.05 }}
+                                    >
+                                      <Link
+                                        href={service.href}
+                                        onClick={toggleMenu}
+                                        className={`block mobile-touch-target px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${pathname === service.href
+                                          ? 'text-amber-400 bg-amber-500/20'
+                                          : 'text-white/70 hover:text-white hover:bg-white/5'
+                                          }`}
+                                        style={{ minHeight: '40px' }}
+                                      >
+                                        {service.name}
+                                      </Link>
+                                    </motion.div>
+                                  ))}
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </motion.div>
+                        );
+                      }
+
+                      // Regular menu items
+                      return (
+                        <motion.div
+                          key={item.name}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                        >
+                          <Link
+                            href={item.href}
+                            onClick={toggleMenu}
+                            className={`block mobile-touch-target px-4 py-3 rounded-xl font-medium transition-all duration-300 ${pathname === item.href
                               ? 'text-amber-400 bg-amber-500/20'
                               : 'text-white/80 hover:text-white hover:bg-white/10'
-                          }`}
-                          style={{ minHeight: '44px' }}
-                        >
-                          {item.name}
-                        </Link>
-                      </motion.div>
-                    ))}
+                              }`}
+                            style={{ minHeight: '44px' }}
+                          >
+                            {item.name}
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
                   </nav>
 
                   {/* Mobile CTA */}
@@ -280,7 +465,7 @@ export default function Navigation() {
                         </div>
                         <span className="text-sm">Get Quote</span>
                       </button>
-                      
+
                       <a
                         href="mailto:info@whitemassif.com"
                         className="flex items-center space-x-3 text-white/70 hover:text-white transition-colors"
@@ -290,7 +475,7 @@ export default function Navigation() {
                         </div>
                         <span className="text-sm">info@whitemassif.com</span>
                       </a>
-                      
+
                       <div className="flex items-center space-x-3 text-white/70">
                         <div className="w-8 h-8 glass rounded-lg flex items-center justify-center">
                           <MapPin className="w-4 h-4" />
