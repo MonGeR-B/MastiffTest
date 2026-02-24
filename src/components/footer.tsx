@@ -77,7 +77,8 @@ export default function Footer() {
     { name: 'Services', href: '/services' },
     { name: 'Our Team', href: '/team' },
     { name: 'Our Clients', href: '/clients' },
-    { name: 'Careers', href: '/careers' }
+    { name: 'Careers', href: '/careers' },
+    { name: 'Location', href: '/event-management-company-in-bangalore' }
   ];
 
   const contactInfo = [
