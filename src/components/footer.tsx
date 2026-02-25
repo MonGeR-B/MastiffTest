@@ -77,8 +77,7 @@ export default function Footer() {
     { name: 'Services', href: '/services' },
     { name: 'Our Team', href: '/team' },
     { name: 'Our Clients', href: '/clients' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Location', href: '/event-management-company-in-bangalore' }
+    { name: 'Careers', href: '/careers' }
   ];
 
   const contactInfo = [
@@ -202,6 +201,19 @@ export default function Footer() {
                       </Link>
                     );
                   })}
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="mt-8">
+                <h4 className="font-semibold text-white mb-4">Location</h4>
+                <div className="space-y-3">
+                  <Link
+                    href="/event-management-company-in-bangalore"
+                    className="block text-white/80 hover:text-[#F9A625] transition-colors duration-300 hover:translate-x-1 transform"
+                  >
+                    Bangalore
+                  </Link>
                 </div>
               </div>
             </motion.div>

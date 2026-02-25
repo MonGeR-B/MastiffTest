@@ -28,123 +28,36 @@ export default function CorporateEventManagementClient() {
                         className="object-cover scale-105"
                         priority
                     />
-                    {/* Dark Overlay for text readability */}
-                    <div className="absolute inset-0 bg-black/60"></div>
+                    {/* Overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/30"></div>
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center max-w-5xl mx-auto"
+                        className="max-w-7xl"
                     >
-                        {/* Badge */}
-                        <Badge className="mb-8 bg-white/10 backdrop-blur-md text-[#F9A625] border-[#F9A625]/30 px-6 py-2 shadow-2xl hover:bg-white/20 transition-colors">
-                            <MapPin className="w-4 h-4 mr-2" />
-                            Bangalore&apos;s Premier Event Partner
-                        </Badge>
-
                         {/* Main H1 Heading */}
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display text-white mb-8 leading-[1.1] tracking-tight drop-shadow-2xl">
-                            Corporate Event Management <br className="hidden md:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F9A625] to-[#fcd34d]">in Bangalore</span>
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl font-display text-white mb-8 leading-[1.1] drop-shadow-2xl tracking-tight">
+                            Corporate Event Management Company <br className="hidden sm:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F9A625] to-[#fcd34d] lg:text-8xl">in Bangalore</span>
                         </h1>
 
-                        {/* Short Subheadline */}
-                        <p className="text-xl sm:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            Delivering end-to-end corporate event solutions that transcend décor to create <strong className="text-white font-semibold">measurable strategic impact</strong> for Fortune 500 companies.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                            <Button
-                                onClick={() => openPopup('bangalore-hero-cta')}
-                                className="w-full sm:w-auto px-8 py-6 text-lg rounded-full bg-[#F9A625] text-white hover:bg-[#e0921a] border-none shadow-[0_0_30px_rgba(249,166,37,0.3)] hover:shadow-[0_0_40px_rgba(249,166,37,0.5)] hover:-translate-y-1 transition-all duration-300"
-                            >
-                                Contact Our Planners
-                                <ArrowRight className="ml-2 w-5 h-5" />
-                            </Button>
-                            <Button
-                                variant="outline"
-                                onClick={() => {
-                                    document.getElementById('core-services')?.scrollIntoView({ behavior: 'smooth' });
-                                }}
-                                className="w-full sm:w-auto px-8 py-6 text-lg rounded-full bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:-translate-y-1"
-                            >
-                                Explore Core Services
-                            </Button>
+                        {/* Subtext Paragraphs */}
+                        <div className="space-y-6 text-lg sm:text-xl text-gray-200 mb-12 max-w-5xl leading-relaxed font-light drop-shadow-xl">
+                            <p>
+                                Bangalore’s business districts, Whitefield, Electronic City, Manyata, and Outer Ring Road, house major tech giants and Fortune 500 offices. Meeting planner needs here go beyond décor; they demand strategic planning that aligns with corporate goals.
+                            </p>
+                            <p>
+                                As an established Bangalore-based agency, White Massif delivers end-to-end corporate event solutions (strategy, design, and production) that create measurable impact. With 12+ years of experience and over 1,000 successful events, we understand local logistics (traffic, venue demand) and corporate compliance requirements.
+                            </p>
+                            <p>
+                                If you’re searching for a corporate event partner in Bangalore, we offer the expertise and reliability to execute flawlessly.
+                            </p>
                         </div>
                     </motion.div>
-                </div>
-            </section>
-
-            {/* Strategic Overview Section */}
-            <section className="py-24 bg-white relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <Badge className="mb-6 bg-[#2A3959]/10 text-[#2A3959] border-[#2A3959]/20 px-4 py-2">
-                                Local Expertise
-                            </Badge>
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display text-[#2A3959] mb-6 leading-tight">
-                                Navigating the complexities of <br className="hidden sm:block" />
-                                <span className="text-[#F9A625]">Bangalore&apos;s corporate landscape.</span>
-                            </h2>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-6 font-light">
-                                Bangalore&apos;s business districts—Whitefield, Electronic City, Manyata, and Outer Ring Road—house major tech giants and Fortune 500 offices. Meeting planner needs here go beyond aesthetic design; they demand <strong className="font-medium text-[#2A3959]">strategic planning that aligns perfectly with broad corporate goals.</strong>
-                            </p>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-8 font-light">
-                                As an established Bangalore-based agency, White Massif delivers end-to-end corporate event solutions that create measurable impact. We intimately understand local logistics from traffic patterns to nuanced venue demand, alongside strict corporate compliance requirements.
-                            </p>
-                            <div className="flex gap-10">
-                                <div>
-                                    <p className="text-4xl font-display font-bold text-[#F9A625] mb-1">12+</p>
-                                    <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">Years Experience</p>
-                                </div>
-                                <div className="w-px bg-gray-200"></div>
-                                <div>
-                                    <p className="text-4xl font-display font-bold text-[#F9A625] mb-1">1,000+</p>
-                                    <p className="text-sm text-gray-500 font-medium uppercase tracking-wider">Successful Events</p>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="relative"
-                        >
-                            {/* Decorative background blur */}
-                            <div className="absolute -z-10 -bottom-10 -right-10 w-72 h-72 bg-[#F9A625]/20 rounded-full blur-3xl"></div>
-                            <div className="absolute -z-10 -top-10 -left-10 w-72 h-72 bg-[#2A3959]/10 rounded-full blur-3xl"></div>
-
-                            <div className="relative rounded-[2rem] overflow-hidden aspect-square sm:aspect-[4/3] lg:aspect-auto lg:h-[600px] shadow-2xl border border-gray-100">
-                                <Image
-                                    src={serviceImages.conventionMeet}
-                                    alt="Corporate Events in Bangalore"
-                                    fill
-                                    className="object-cover hover:scale-105 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#2A3959]/95 via-[#2A3959]/40 to-transparent"></div>
-
-                                <div className="absolute bottom-0 inset-x-0 p-8 sm:p-10">
-                                    <div className="w-12 h-12 bg-[#F9A625] rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-[#F9A625]/30">
-                                        <Target className="w-6 h-6 text-white" />
-                                    </div>
-                                    <p className="text-2xl sm:text-3xl font-display text-white leading-snug drop-shadow-md">
-                                        &quot;If you&apos;re searching for a reliable corporate event partner in Bangalore, we offer the seasoned expertise needed to execute flawlessly.&quot;
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
                 </div>
             </section>
 
@@ -356,7 +269,7 @@ export default function CorporateEventManagementClient() {
                                     className="relative flex flex-col items-center text-center group"
                                 >
                                     <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-md border-2 border-transparent group-hover:border-[#F9A625] transition-all duration-300 relative z-10 group-hover:-translate-y-2">
-                                        <span className="absolute -top-3 -right-3 text-4xl font-display font-bold text-gray-100 -z-10 group-hover:text-[#F9A625]/10 transition-colors">
+                                        <span className="absolute -top-3 -right-3 text-4xl font-display font-bold text-gray-400 -z-10 group-hover:text-[#F9A625] transition-colors">
                                             {phase.num}
                                         </span>
                                         <phase.icon className="w-8 h-8 text-[#2A3959] group-hover:text-[#F9A625] transition-colors duration-300" />

@@ -32,28 +32,28 @@ export default function ProductLaunchEvent() {
                     <div className="absolute inset-0 bg-black/60"></div>
                 </div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center max-w-7xl mx-auto"
+                        className="max-w-4xl"
                     >
-
                         {/* Main H1 Heading */}
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display text-white mb-8 leading-[1.1] tracking-tight drop-shadow-2xl">
-                            Product Launch Event Management <br className="hidden md:block" />
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-display text-white mb-8 leading-[1.1] drop-shadow-2xl tracking-tight">
+                            Product Launch Event Management <br className="hidden sm:block" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F9A625] to-[#fcd34d]">in Bangalore</span>
                         </h1>
 
-                        {/* Short Subheadline */}
-                        <p className="text-xl sm:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            Launching a new product or service in Bangalore’s innovation hub demands precision and flair. Whether unveiling a SaaS platform in Whitefield or a consumer gadget in the CBD, your launch must generate buzz and brand credibility.
-                        </p>
-
-                        <p className="text-xl sm:text-2xl text-gray-200 mb-12 max-w-4xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            White Massif specializes in Bangalore product launch events that blend creative storytelling with flawless execution. From concept to completion, we ensure your launch resonates with stakeholders, customers, press, investors, and aligns with your broader corporate objectives.
-                        </p>
+                        {/* Subtext Paragraphs */}
+                        <div className="space-y-6 text-lg sm:text-xl text-gray-200 mb-12 max-w-3xl leading-relaxed font-light drop-shadow-xl">
+                            <p>
+                                Launching a new product or service in Bangalore’s innovation hub demands precision and flair. Whether unveiling a SaaS platform in Whitefield or a consumer gadget in the CBD, your launch must generate buzz and brand credibility.
+                            </p>
+                            <p>
+                                White Massif specializes in Bangalore product launch events that blend creative storytelling with flawless execution. From concept to completion, we ensure your launch resonates with stakeholders, customers, press, investors, and aligns with your broader corporate objectives.
+                            </p>
+                        </div>
                     </motion.div>
                 </div>
             </section>

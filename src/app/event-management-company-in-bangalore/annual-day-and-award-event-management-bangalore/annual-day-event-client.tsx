@@ -33,32 +33,31 @@ export default function AnnualDayEventClient() {
                     <div className="absolute inset-0 bg-black/60"></div>
                 </div>
 
-                <div className="relative z-10 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-32">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center max-w-7xl mx-auto"
+                        className="max-w-6xl"
                     >
-
                         {/* Main H1 Heading */}
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display text-white mb-4 leading-[1.1] tracking-tight drop-shadow-2xl">
-                            Annual Day & Corporate Award Night Event Management<br className="hidden md:block" />
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-display text-white mb-8 leading-[1.1] drop-shadow-2xl tracking-tight">
+                            Annual Day & Corporate Award Night Event Management<br className="hidden sm:block" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F9A625] to-[#fcd34d]">in Bangalore</span>
                         </h1>
 
-                        {/* Short Subheadline */}
-                        <p className="text-md sm:text-xl text-gray-200 mb-6 max-w-5xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            Annual days and corporate award nights are defining moments in a company’s yearly calendar. In Bangalore, where thriving tech firms, GCCs, startups, and established enterprises shape a dynamic corporate culture, these celebrations are more than parties, they are platforms for recognition, motivation, and employer branding.
-                        </p>
-
-                        <p className="text-md sm:text-xl text-gray-200 mb-6 max-w-5xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            Employees look forward to this one evening when their achievements are applauded on stage, leaders share milestones, and teams celebrate collective success. These events must be glamorous, professionally produced, and emotionally impactful, while remaining tightly managed and on schedule.
-                        </p>
-
-                        <p className="text-md sm:text-xl text-gray-200 mb-6 max-w-5xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            White Massif specializes in Corporate Annual Day and Awards Night event management in Bangalore. From grand stage production and thematic décor to scripting CEO speeches and coordinating award presentations, we deliver polished, celebrity-style productions that reinforce company culture and elevate morale.
-                        </p>
+                        {/* Subtext Paragraphs */}
+                        <div className="space-y-6 text-lg sm:text-xl text-gray-200 mb-12 max-w-5xl leading-relaxed font-light drop-shadow-xl">
+                            <p>
+                                Annual days and corporate award nights are defining moments in a company’s yearly calendar. In Bangalore, where thriving tech firms, GCCs, startups, and established enterprises shape a dynamic corporate culture, these celebrations are more than parties, they are platforms for recognition, motivation, and employer branding.
+                            </p>
+                            <p>
+                                Employees look forward to this one evening when their achievements are applauded on stage, leaders share milestones, and teams celebrate collective success. These events must be glamorous, professionally produced, and emotionally impactful, while remaining tightly managed and on schedule.
+                            </p>
+                            <p>
+                                White Massif specializes in Corporate Annual Day and Awards Night event management in Bangalore. From grand stage production and thematic décor to scripting CEO speeches and coordinating award presentations, we deliver polished, celebrity-style productions that reinforce company culture and elevate morale.
+                            </p>
+                        </div>
                     </motion.div>
                 </div>
             </section>

@@ -32,32 +32,31 @@ export default function VirtualHybridEventClient() {
                     <div className="absolute inset-0 bg-black/60"></div>
                 </div>
 
-                <div className="relative z-10 max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-32">
+                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center max-w-7xl mx-auto"
+                        className="max-w-6xl"
                     >
-
                         {/* Main H1 Heading */}
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display text-white mb-4 leading-[1.1] tracking-tight drop-shadow-2xl">
-                            Virtual & Hybrid Corporate Event <br className="hidden md:block" />
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] font-display text-white mb-8 leading-[1.1] drop-shadow-2xl tracking-tight">
+                            Virtual & Hybrid Corporate Event <br className="hidden sm:block" />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F9A625] to-[#fcd34d]">in Bangalore</span>
                         </h1>
 
-                        {/* Short Subheadline */}
-                        <p className="text-md sm:text-xl text-gray-200 mb-6 max-w-5xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            Remote work, distributed teams, and global stakeholders have transformed how businesses communicate. In Bangalore, India’s leading technology and innovation hub, companies require virtual and hybrid corporate events that deliver the same impact, professionalism, and engagement as in-person gatherings.
-                        </p>
-
-                        <p className="text-md sm:text-xl text-gray-200 mb-6 max-w-5xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            From corporate townhalls and leadership summits to product launches and training workshops, organizations in Bangalore need reliable digital event execution with zero technical compromise. White Massif pioneered hybrid event delivery in the city, creating seamless experiences that connect audiences in Whitefield boardrooms, Electronic City campuses, and international locations simultaneously.
-                        </p>
-
-                        <p className="text-md sm:text-xl text-gray-200 mb-6 max-w-5xl mx-auto font-light leading-relaxed drop-shadow-lg">
-                            Our virtual and hybrid corporate event solutions combine broadcast-grade production, secure streaming infrastructure, and interactive engagement tools, ensuring every participant, whether on-site or online, receives an equally immersive experience.
-                        </p>
+                        {/* Subtext Paragraphs */}
+                        <div className="space-y-6 text-lg sm:text-xl text-gray-200 mb-12 max-w-5xl leading-relaxed font-light drop-shadow-xl">
+                            <p>
+                                Remote work, distributed teams, and global stakeholders have transformed how businesses communicate. In Bangalore, India’s leading technology and innovation hub, companies require virtual and hybrid corporate events that deliver the same impact, professionalism, and engagement as in-person gatherings.
+                            </p>
+                            <p>
+                                From corporate townhalls and leadership summits to product launches and training workshops, organizations in Bangalore need reliable digital event execution with zero technical compromise. White Massif pioneered hybrid event delivery in the city, creating seamless experiences that connect audiences in Whitefield boardrooms, Electronic City campuses, and international locations simultaneously.
+                            </p>
+                            <p>
+                                Our virtual and hybrid corporate event solutions combine broadcast-grade production, secure streaming infrastructure, and interactive engagement tools, ensuring every participant, whether on-site or online, receives an equally immersive experience.
+                            </p>
+                        </div>
                     </motion.div>
                 </div>
             </section>
