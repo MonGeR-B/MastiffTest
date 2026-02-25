@@ -86,37 +86,37 @@ export default function BangaloreClient() {
                                 icon: Briefcase,
                                 title: "Corporate Event Management",
                                 desc: "Full-service planning for conferences, all-hands, and corporate meetings.",
-                                link: "/event-management-company-in-bangalore/corporate-event-management-company-bangalore"
+                                link: "/corporate-event-management-company-bangalore"
                             },
                             {
                                 icon: Rocket,
                                 title: "Product Launch Management",
                                 desc: "High-impact product and brand launches in Bangalore.",
-                                link: "/event-management-company-in-bangalore/product-launch-event-management-in-bangalore"
+                                link: "/product-launch-event-management-in-bangalore"
                             },
                             {
                                 icon: Presentation,
                                 title: "Conferences & Summits",
                                 desc: "Large-scale conferences and summits (B2B, dealer meets).",
-                                link: "/event-management-company-in-bangalore/conference-and-summit-management-in-bangalore"
+                                link: "/conference-and-summit-management-in-bangalore"
                             },
                             {
                                 icon: Map,
                                 title: "MICE Events",
                                 desc: "Meetings, Incentives, Conferences & Exhibitions – comprehensive MICE programs.",
-                                link: "/event-management-company-in-bangalore/mice-event-management-in-bangalore"
+                                link: "/mice-event-management-in-bangalore"
                             },
                             {
                                 icon: Video,
                                 title: "Virtual & Hybrid Events",
                                 desc: "Professional live and online event production.",
-                                link: "/event-management-company-in-bangalore/virtual-and-hybrid-events-in-bangalore"
+                                link: "/virtual-and-hybrid-events-in-bangalore"
                             },
                             {
                                 icon: Award,
                                 title: "Annual Day & Awards Nights",
                                 desc: "Employee awards, annual celebrations and gala events.",
-                                link: "/event-management-company-in-bangalore/annual-day-and-award-event-management-bangalore"
+                                link: "/annual-day-and-award-event-management-bangalore"
                             }
                         ].map((service, idx) => (
                             <motion.div
